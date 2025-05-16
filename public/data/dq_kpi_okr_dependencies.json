@@ -1,0 +1,137 @@
+[
+  {
+    "metricId": "KPI_001",
+    "metricName": "Customer Satisfaction Score (CSAT)",
+    "metricType": "KPI",
+    "description": "Measures overall customer satisfaction with products, services, or specific interactions, typically sourced from surveys.",
+    "dataSourcesInvolved": ["Customer survey responses", "Customer interaction logs (e.g., support tickets, call logs)", "CRM data (for customer segmentation and context)"],
+    "dependentDimensionDamaIds": [3, 12, 14, 19, 20, 26, 36, 48, 55, 57], // Accuracy, Completeness(Rec,Val), Confidentiality, Consistency, Currency, Objectivity, Relevance, Uniqueness(Obj), Validity
+    "impactOfPoorDQonMetric": "Inaccurate CSAT if survey data capture is flawed or survey design is biased (Objectivity). Biased CSAT if customer records for survey distribution are incomplete or not representative (Completeness, Uniqueness). Low response rates or irrelevant feedback if contact data is poor (Accuracy, Currency) or survey is not relevant (Relevance). Inconsistent survey administration can affect Consistency. Invalid responses can skew results."
+  },
+  {
+    "metricId": "KPI_002",
+    "metricName": "Net Promoter Score (NPS)",
+    "metricType": "KPI",
+    "description": "Measures customer loyalty and willingness to recommend a company's products or services.",
+    "dataSourcesInvolved": ["Customer survey responses (specifically the NPS question)", "CRM data"],
+    "dependentDimensionDamaIds": [3, 12, 14, 19, 20, 26, 36, 48, 55], // Accuracy, Completeness(Rec,Val), Confidentiality, Consistency, Currency, Objectivity, Relevance, Uniqueness(Obj)
+    "impactOfPoorDQonMetric": "Skewed NPS if survey sampling is not based on accurate or complete customer lists (Accuracy, Completeness, Uniqueness). Biased results if survey wording or administration is not objective. Irrelevant if sent to wrong customer segments. Inconsistent if calculation method changes."
+  },
+  {
+    "metricId": "KPI_003",
+    "metricName": "Customer Churn Rate",
+    "metricType": "KPI",
+    "description": "The percentage of customers who stop using a company's products or services during a specific time period.",
+    "dataSourcesInvolved": ["CRM data (customer status, start/end dates)", "Subscription management system", "Sales transaction data"],
+    "dependentDimensionDamaIds": [3, 12, 14, 20, 26, 53, 55, 57], // Accuracy, Completeness(Rec,Val), Consistency, Currency, Timeliness, Uniqueness(Obj), Validity
+    "impactOfPoorDQonMetric": "Inaccurate churn rate if customer status (active/inactive) is not accurately maintained (Accuracy, Currency, Timeliness). Miscalculation if start/end dates are incorrect or records are missing (Completeness). Duplicate customer records (Uniqueness) can understate or overstate churn. Inconsistent definitions of 'churn' across reports."
+  },
+  {
+    "metricId": "KPI_004",
+    "metricName": "Sales Growth Rate",
+    "metricType": "KPI",
+    "description": "Measures the increase in sales revenue over a specific period.",
+    "dataSourcesInvolved": ["Sales transaction systems", "Financial accounting system", "CRM (for historical context)"],
+    "dependentDimensionDamaIds": [3, 10, 12, 14, 20, 26, 50, 53, 56, 57], // Accuracy, Comparability(Time), Completeness(Rec,Val), Consistency, Currency, Reproducibility, Timeliness, Uniqueness(Rec), Validity
+    "impactOfPoorDQonMetric": "Misstated growth if sales transactions are inaccurate, duplicated (Uniqueness), or incomplete. Unreliable trends if definitions or recording methods change over time (Comparability, Consistency). Difficult to reproduce if source data is flawed (Reproducibility). Invalid transaction data skews totals."
+  },
+  {
+    "metricId": "KPI_005",
+    "metricName": "Average Revenue Per User/Customer (ARPU/ARPC)",
+    "metricType": "KPI",
+    "description": "The average revenue generated from each active customer or user over a period.",
+    "dataSourcesInvolved": ["Sales transaction systems", "CRM/Subscription systems (for active customer counts)"],
+    "dependentDimensionDamaIds": [3, 12, 14, 20, 26, 55, 56, 57], // Accuracy, Completeness(Rec,Val), Consistency, Currency, Uniqueness(Obj for customer count, Rec for transactions), Validity
+    "impactOfPoorDQonMetric": "Incorrect ARPU if revenue data (Accuracy, Completeness, Validity) or active customer counts (Accuracy, Uniqueness, Completeness) are flawed. Inconsistent calculation if 'active customer' definition varies."
+  },
+  {
+    "metricId": "KPI_006",
+    "metricName": "On-Time Delivery Rate",
+    "metricType": "KPI",
+    "description": "The percentage of orders delivered to customers by the promised delivery date.",
+    "dataSourcesInvolved": ["Order management system", "Logistics/Shipping system", "CRM (for customer addresses)"],
+    "dependentDimensionDamaIds": [3, 12, 14, 20, 26, 53, 57], // Accuracy (addresses, promised dates, actual delivery dates), Completeness(Rec,Val), Consistency, Currency, Timeliness, Validity
+    "impactOfPoorDQonMetric": "Inaccurate rate if promised or actual delivery dates are incorrect or missing. Shipments to wrong addresses (Accuracy) result in failed deliveries. Incomplete order or shipping records lead to unmeasurable instances. Timeliness of status updates is crucial."
+  },
+  {
+    "metricId": "KPI_007",
+    "metricName": "Inventory Turnover",
+    "metricType": "KPI",
+    "description": "Measures how many times average inventory is sold or used during a period; indicates inventory management efficiency.",
+    "dataSourcesInvolved": ["Inventory management system", "Sales system (Cost of Goods Sold - COGS)"],
+    "dependentDimensionDamaIds": [3, 10, 12, 14, 20, 26, 53, 55, 56, 57], // Accuracy, Comparability(Time), Completeness(Rec,Val), Consistency, Currency, Timeliness, Uniqueness(Obj for items, Rec for transactions), Validity
+    "impactOfPoorDQonMetric": "Misleading turnover if COGS or average inventory values are inaccurate (Accuracy, Completeness, Currency). Inconsistent item definitions or valuation methods (Consistency, Comparability) skew trends. Duplicate item records (Uniqueness) affect inventory counts."
+  },
+  {
+    "metricId": "KPI_008",
+    "metricName": "Employee Attrition Rate",
+    "metricType": "KPI",
+    "description": "The rate at which employees leave the organization over a specific period.",
+    "dataSourcesInvolved": ["HRIS (Human Resources Information System)"],
+    "dependentDimensionDamaIds": [3, 12, 14, 20, 26, 53, 55, 57], // Accuracy (employment start/end dates, employee status), Completeness(Rec,Val), Consistency, Currency, Timeliness, Uniqueness(Obj), Validity
+    "impactOfPoorDQonMetric": "Incorrect attrition if employee records, start/end dates, or employment statuses are inaccurate or not current. Missing employee records (Completeness) or duplicate records (Uniqueness) will skew the calculation."
+  },
+  {
+    "metricId": "KPI_009",
+    "metricName": "Days Sales Outstanding (DSO)",
+    "metricType": "KPI",
+    "description": "Measures the average number of days it takes for a company to collect payment after a sale has been made.",
+    "dataSourcesInvolved": ["Accounts Receivable system", "Sales system", "Invoicing system"],
+    "dependentDimensionDamaIds": [3, 12, 14, 20, 26, 53, 56, 57], // Accuracy (invoice dates, payment dates, amounts), Completeness(Rec,Val), Consistency, Currency, Timeliness, Uniqueness(Rec for invoices/payments), Validity
+    "impactOfPoorDQonMetric": "Inaccurate DSO if invoice dates, payment receipt dates, or sales figures are incorrect. Missing invoices or payments (Completeness) distort the average. Inconsistent terms or collection data affects reliability."
+  },
+  {
+    "metricId": "KPI_010",
+    "metricName": "Website Conversion Rate",
+    "metricType": "KPI",
+    "description": "The percentage of website visitors who complete a desired action (e.g., make a purchase, sign up for a newsletter).",
+    "dataSourcesInvolved": ["Web analytics platform (e.g., Google Analytics)", "E-commerce platform", "CRM (for lead tracking)"],
+    "dependentDimensionDamaIds": [3, 12, 14, 20, 26, 30, 53, 56, 57, 59], // Accuracy (tracking codes, goal definitions), Completeness(Rec,Val for sessions/conversions), Consistency (definitions across platforms), Currency, Integrity (of tracking data), Timeliness, Uniqueness(Rec for sessions/users), Validity, Variety (of tracking methods)
+    "impactOfPoorDQonMetric": "Misleading conversion rate if visitor counts or conversion events are inaccurately tracked or defined. Incomplete tracking (e.g., missing tags) underreports conversions. Inconsistent goal definitions across campaigns make comparisons unreliable. Bot traffic (Uniqueness issue) can inflate visitor counts."
+  },
+  {
+    "metricId": "OKR_KR_001",
+    "metricName": "Reduce Order Processing Errors by 15% in Q3",
+    "metricType": "OKR Key Result",
+    "objectiveLink": "Improve Operational Efficiency",
+    "dataSourcesInvolved": ["Order entry system", "CRM", "Inventory system", "Error logging system"],
+    "dependentDimensionDamaIds": [3, 12, 14, 20, 24, 34, 47, 50, 57], // Accuracy, Completeness(Rec,Val), Consistency(Gen,RecLvl), Metadata Compliance, Ref. Integrity, Reproducibility, Validity
+    "impactOfPoorDQonMetric": "Difficult to accurately baseline and measure the current error rate if error data itself is inaccurate or incomplete. Hard to achieve the reduction target if root causes (often DQ related like invalid product codes, inaccurate customer addresses, inconsistent pricing) are not addressed. Reproducibility needed to verify improvements."
+  },
+  {
+    "metricId": "OKR_KR_002",
+    "metricName": "Increase Customer Retention by 10% Year-over-Year",
+    "metricType": "OKR Key Result",
+    "objectiveLink": "Enhance Customer Loyalty",
+    "dataSourcesInvolved": ["CRM", "Subscription Management System", "Sales Data", "Customer Support System"],
+    "dependentDimensionDamaIds": [3, 10, 12, 14, 20, 26, 48, 53, 55], // Accuracy, Comparability(Time), Completeness(Rec,Val), Consistency, Currency, Relevance (of retention efforts), Timeliness, Uniqueness(Obj)
+    "impactOfPoorDQonMetric": "Inability to reliably track retention if customer identity (Uniqueness, Accuracy) is flawed or if 'active' vs 'churned' status is not accurately maintained (Currency, Timeliness). Comparability over time is essential for YoY measurement. Irrelevant or poorly targeted retention campaigns (due to bad segmentation data) will be ineffective."
+  },
+  {
+    "metricId": "OKR_KR_003",
+    "metricName": "Improve Time-to-Market for New Products by 20%",
+    "metricType": "OKR Key Result",
+    "objectiveLink": "Accelerate Product Innovation",
+    "dataSourcesInvolved": ["Project management system", "R&D databases", "Product lifecycle management (PLM) system", "Market research data"],
+    "dependentDimensionDamaIds": [2, 3, 5, 8, 12, 14, 20, 26, 43, 48, 53], // Accessibility, Accuracy, Availability, Coherence, Completeness(Rec,Val), Consistency, Currency, Punctuality (of milestone data), Relevance, Timeliness
+    "impactOfPoorDQonMetric": "Delays in development if critical design or research data is inaccurate, inaccessible, or incomplete. Poor coordination if different teams work with inconsistent product specifications. Inability to accurately measure current time-to-market if project milestone data is not timely or accurate (Punctuality, Accuracy)."
+  },
+  {
+    "metricId": "OKR_KR_004",
+    "metricName": "Decrease Supplier Non-Conformance Rate by 25%",
+    "metricType": "OKR Key Result",
+    "objectiveLink": "Enhance Supply Chain Quality",
+    "dataSourcesInvolved": ["Supplier quality management system", "Goods receiving inspection logs", "Purchase order system", "Supplier master data"],
+    "dependentDimensionDamaIds": [3, 10, 12, 14, 20, 26, 41, 48, 51, 53, 57], // Accuracy, Comparability(Time), Completeness(Rec,Val), Consistency, Currency, Precision(1), Relevance, Reputation (of inspection data), Timeliness, Validity
+    "impactOfPoorDQonMetric": "Inaccurate measurement of non-conformance if inspection data is flawed (Accuracy, Precision) or incomplete. Difficulty in identifying root causes or specific problematic suppliers if data is inconsistent or lacks relevant details. Unfair assessment if historical data is not comparable."
+  },
+  {
+    "metricId": "OKR_KR_005",
+    "metricName": "Achieve 99.9% Accuracy in Financial Reporting Submissions",
+    "metricType": "OKR Key Result",
+    "objectiveLink": "Ensure Regulatory Compliance & Financial Integrity",
+    "dataSourcesInvolved": ["General Ledger", "Sub-ledgers", "Consolidation system", "Reporting tools"],
+    "dependentDimensionDamaIds": [1, 3, 8, 12, 13, 14, 16, 17, 20, 22, 24, 26, 30, 34, 47, 50, 52, 54, 57], // Access Security, Accuracy, Coherence, Completeness(Rec,File,Val), Metadata(Compl.), Compliance(Data), Consistency(Gen,Across,RecLvl), Currency, Integrity, MetaCompliance, Ref.Integrity, Reproducibility, Retention, Traceability, Validity
+    "impactOfPoorDQonMetric": "Any inaccuracy in underlying transactional data directly impacts reporting accuracy. Incomplete data (missing transactions or files) leads to misstatements. Inconsistent accounting treatments or definitions (Coherence, Consistency) cause errors. Lack of Traceability or Reproducibility makes auditing and error correction extremely difficult. Security and Integrity are paramount for trustworthy financial data."
+  }
+]

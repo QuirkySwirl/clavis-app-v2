@@ -1,0 +1,54 @@
+[
+  {
+    "term": "Quality (ISO 9000:2015)",
+    "definition": "Quality is the degree to which inherent characteristics of an object meet requirements.",
+    "source_document_page": 7
+  },
+  {
+    "term": "Data Quality",
+    "definition": "Data quality is the degree to which dimensions of data meet requirements.",
+    "notes": [
+      "The term characteristics in the definition of ISO 9000 is substituted by dimensions, because this term is more common in data management.",
+      "The adjective inherent is left out, because also extrinsic dimensions are relevant in data management such as availability.",
+      "Data take various forms: data concepts. Each dimension of data quality is defined in relation to such a data concept."
+    ],
+    "source_document_page": 7
+  },
+  {
+    "term": "Data Concept",
+    "definition": "Data concept is a form by which data is structured and organised in an information system.",
+    "examples": ["dataset", "data file", "record", "attribute", "data value"],
+    "reference_to_appendix": "Appendix 4 for more data concepts and definitions",
+    "figure_reference": "Figure 1: Data concepts in a data model (page 8)",
+    "source_document_page": 7
+  },
+  {
+    "term": "Dimension",
+    "definition": "Dimension is a measurable feature of a data concept.",
+    "derivation": "Derived from the definition from ISO 9000. This standard defines a characteristic as a feature of an object.",
+    "analogy": "The term dimension is used to make the connection to dimensions in the measurement of physical objects (e.g., length, width, height).",
+    "examples": ["accuracy", "completeness", "timeliness"],
+    "clarification": "The term dimension in this context should not be confused with its use in the context of business intelligence where it refers to a category for summarizing or viewing data.",
+    "source_document_page": 8
+  },
+  {
+    "term": "Combination of a dimension and a data concept",
+    "description": "A dimension and a data concept should be a logical combination. Definitions of dimensions of data quality in this report are composed of a combination of a dimension and a data concept.",
+    "examples_table_reference": "Table 1: Examples of combinations of dimensions and data concepts (page 9)",
+    "examples": [
+        {"dimension": "Accuracy", "data_concept": "Data values"},
+        {"dimension": "Completeness", "data_concept": "Records"},
+        {"dimension": "Completeness", "data_concept": "Data values"},
+        {"dimension": "Referential integrity", "data_concept": "Data files (tables)"}
+    ],
+    "source_document_page": 9
+  },
+  {
+    "term": "Requirement (ISO 9000)",
+    "definition": "Requirement is a need or expectation that is stated, generally implied or obligatory.",
+    "context_note": "In the context of data quality, requirements can be made specific by target values of indicators that are associated with dimensions of data quality.",
+    "examples_table_reference": "Table 2: Examples of requirements of data quality (page 9)",
+    "stakeholder_note": "Requirements for dimensions of data quality are context dependant and should by established by their stakeholders. You cannot state in general that the quality in all cases should be as high as possible because unnecessary costs may be incurred.",
+    "source_document_page": 9
+  }
+]

@@ -1,0 +1,1256 @@
+[
+  {
+    "id": 1,
+    "damaId": 6,
+    "name": "Ability to represent null values",
+    "category": "Format",
+    "definition": "The degree to which a format allows null values in an attribute.",
+    "unitOfMeasure": "Yes/No",
+    "icon": "bi-file-earmark-code",
+    "examplePoor": [
+      "Logistics: A required field (e.g., 'Hazardous Material Class') does not allow nulls, forcing users to enter a default non-hazardous class when the real value is unknown or not applicable for a non-hazardous item.",
+      "HR: A 'Termination Date' field in an employee system does not allow nulls, forcing entry of a dummy future date for active employees.",
+      "E-commerce: A 'Discount Code Applied' field in an order form cannot be left blank, requiring a 'NONE' value instead of a true null."
+    ],
+    "exampleGood": [
+      "Logistics: An optional field (e.g., 'Special Handling Instructions') correctly allows null values when no special instructions are needed.",
+      "HR: A 'Middle Name' field in an employee record correctly allows null if the employee does not have one.",
+      "E-commerce: A 'Customer Loyalty ID' field in a guest checkout form allows nulls, as guests wouldn't have one."
+    ]
+  },
+  {
+    "id": 2,
+    "damaId": 1,
+    "name": "Access security",
+    "category": "Datasets",
+    "definition": "The degree to which access to datasets is restricted.",
+    "unitOfMeasure": "Grade",
+    "icon": "bi-shield-lock",
+    "examplePoor": [
+      "Logistics: Customer contract details and pricing accessible by all terminal operations staff.",
+      "Finance: All employees can view salary information for everyone in the company.",
+      "Healthcare: Patient medical history datasets are accessible via a shared network drive with no specific access controls."
+    ],
+    "exampleGood": [
+      "Logistics: Access to sensitive financial data (e.g., terminal revenue) is restricted based on user roles (e.g., finance department only).",
+      "Finance: Only HR managers and direct line managers can access employee performance review datasets.",
+      "Healthcare: Access to patient electronic health records (EHR) is strictly controlled by role-based access, logged, and audited."
+    ]
+  },
+  {
+    "id": 3,
+    "damaId": 2,
+    "name": "Accessibility",
+    "category": "Data",
+    "definition": "The ease with which data can be consulted or retrieved.",
+    "unitOfMeasure": "Grade",
+    "icon": "bi-key",
+    "examplePoor": [
+      "Logistics: Yard planners cannot easily access real-time container location data; requires logging into multiple slow, disparate systems.",
+      "Retail: Store managers need to request sales reports from HQ, which takes 2 days to generate, hindering timely stock decisions.",
+      "Research: Historical experiment data is stored in proprietary formats on offline tapes, making it very difficult to access for new analysis."
+    ],
+    "exampleGood": [
+      "Logistics: Planners have a single, responsive dashboard providing fast access to up-to-date container locations and vessel schedules.",
+      "Retail: A self-service BI portal allows store managers to instantly generate custom sales reports for their location.",
+      "Research: All research data is archived in a well-documented, searchable digital repository with open-format options."
+    ],
+    "damaAppendix3Title": "Availability", // PDF Appendix 3 uses "Availability" which is closely related, but its primary definition (DAMA ID 5) is slightly different. Accessibility is about ease of access.
+    "synonyms": ["Obtainability of data"], // From Appendix 3's Availability
+    "relatedDamaDimensionIds": [37], // Obtainability (DAMA ID 37)
+    "indicators": ["Yes or No", "The effort it takes to make data available (hours)"], // From Appendix 3's Availability
+    "notes": ["Data can be partly available."] // From Appendix 3's Availability
+  },
+  {
+    "id": 4,
+    "damaId": 3,
+    "name": "Accuracy",
+    "category": "Data values",
+    "definition": "The degree of closeness of data values to real values.",
+    "unitOfMeasure": "%",
+    "icon": "bi-bullseye",
+    "examplePoor": [
+      "Logistics: Incorrect container weight recorded differs significantly from actual weight, causing unsafe lifts or incorrect billing.",
+      "Healthcare: Patient's date of birth recorded as 10/15/2023 instead of 10/15/1983 in their medical record.",
+      "Finance: Stock price in a portfolio tracking system shows $150.00 but the actual current market price is $152.50."
+    ],
+    "exampleGood": [
+      "Logistics: Container weight in system matches verified gross mass (VGM), ensuring safe handling and accurate charges.",
+      "Healthcare: Patient's allergy information in the Electronic Health Record (EHR) accurately reflects all their known allergies.",
+      "Finance: The account balance displayed to a customer matches the confirmed ledger balance after all transactions are processed for the day."
+    ],
+    "damaAppendix3Title": "Accuracy",
+    "synonyms": ["Correctness of data values"],
+    "relatedDamaDimensionIds": [],
+    "indicators": ["Percentage or number of inaccurate data values."],
+    "notes": [
+      "The data producer or consumer must define when he/she considers a data value as inaccurate and define criteria for inaccuracy.",
+      "The impact of an inaccuracy is different for each attribute.",
+      "Generally, accuracy will be measured for individual attributes, e.g., the accuracy of the product name."
+    ]
+  },
+  {
+    "id": 5,
+    "damaId": 4,
+    "name": "Appropriateness",
+    "category": "Format",
+    "definition": "The degree to which the format is suitable for use.",
+    "unitOfMeasure": "%",
+    "icon": "bi-file-earmark-code",
+    "examplePoor": [
+      "Logistics: Storing numerical quantities (like TEU count) as text strings with embedded commas prevents direct calculations.",
+      "Manufacturing: Sensor timestamps stored as Unix epoch time without timezone information, leading to ambiguity in event sequencing across plants.",
+      "Marketing: Customer survey responses (e.g., 'satisfaction score') stored as free-text instead of a numerical scale, making aggregation hard."
+    ],
+    "exampleGood": [
+      "Logistics: Using a standard date format (YYYY-MM-DD HH:MM:SS) for all event timestamps allows for easy sorting and duration calculations.",
+      "Manufacturing: Storing temperature readings as floating-point numbers with a defined unit (Celsius/Fahrenheit) in metadata.",
+      "Marketing: Using a standardized country code format (ISO 3166-1 alpha-2) for customer addresses ensures compatibility with analytics tools."
+    ]
+  },
+  {
+    "id": 6,
+    "damaId": 5,
+    "name": "Availability",
+    "category": "Data",
+    "definition": "The degree to which data can be consulted or retrieved by data consumers or a process.",
+    "unitOfMeasure": "Grade",
+    "icon": "bi-key",
+    "examplePoor": [
+      "Logistics: The reporting server for terminal performance dashboards is frequently down during peak operational hours.",
+      "E-commerce: Product inventory data is not updated in real-time on the website, leading to orders for out-of-stock items.",
+      "Public Sector: Critical public safety information system experiences frequent outages during emergencies."
+    ],
+    "exampleGood": [
+      "Logistics: The data warehouse has high uptime (e.g., 99.99%) and performance, ensuring vessel schedules and cargo data are readily available for analysis.",
+      "E-commerce: The customer order history is consistently available through the online portal 24/7.",
+      "Public Sector: Emergency response coordination data is accessible through redundant, highly available systems."
+    ],
+    "damaAppendix3Title": "Availability",
+    "synonyms": ["Obtainability of data"],
+    "relatedDamaDimensionIds": [37], // Obtainability
+    "indicators": ["Yes or No", "The effort it takes to make data available (hours)"],
+    "notes": [
+        "Data are not available because they are not processed yet such as the number of casualties of a recent incident.",
+        "Personal data are not available to the public.",
+        "Data are not available for reasons of competition.",
+        "Data are not available because they are confidential or secret.",
+        "Data are not available because they not archived in a professional manner.",
+        "Data can be partly available."
+    ]
+  },
+  {
+    "id": 7,
+    "damaId": 7,
+    "name": "Clarity",
+    "category": "Metadata",
+    "definition": "The ease with which data consumers can understand the metadata.",
+    "unitOfMeasure": "Grade",
+    "icon": "bi-info-circle",
+    "examplePoor": [
+      "Logistics: Data dictionary definition for 'TEU Factor' is ambiguous, missing, or uses highly technical jargon not understood by business users.",
+      "Finance: The metadata for a financial report column 'AdjNetRev' does not explain what adjustments were made or the source of the net revenue figure.",
+      "Scientific Research: A dataset's metadata lacks clear descriptions of experimental variables or the units of measurement used."
+    ],
+    "exampleGood": [
+      "Logistics: Metadata clearly defines 'Dwell Time' calculation, including source systems, specific filters applied, and the unit of measure (e.g., hours).",
+      "Finance: The business glossary clearly defines 'Customer Lifetime Value (CLV)' including the formula, data sources, and assumptions.",
+      "Scientific Research: Metadata for a climate dataset thoroughly documents each variable, its units, collection methodology, and any known data quality issues."
+    ],
+    "damaAppendix3Title": "Clarity",
+    "synonyms": ["Unambiguity", "readability"],
+    "relatedDamaDimensionIds": [], // Conceptual: Completeness (Metadata ID 16), Accuracy (of metadata, not data values), Availability (of metadata)
+    "indicators": ["A grade (1-10)"],
+    "notes": ["Other quality dimensions of metadata are completeness, correctness, and availability."]
+  },
+  {
+    "id": 8,
+    "damaId": 8,
+    "name": "Coherence",
+    "category": "Composition of datasets",
+    "definition": "The degree to which datasets can be combined.",
+    "unitOfMeasure": "Story",
+    "icon": "bi-puzzle",
+    "examplePoor": [
+      "Logistics: Sales data uses 'CustomerID' (integer) while shipping data uses 'Customer_Ref_Code' (alphanumeric string) for the same customer, preventing easy joins.",
+      "Retail: Product data from the e-commerce platform uses 'SKU_Online' while the ERP system uses 'MaterialNumber', hindering unified inventory views.",
+      "Healthcare: Datasets from different hospital departments use varying patient identifier schemes, making it difficult to create a longitudinal patient record."
+    ],
+    "exampleGood": [
+      "Logistics: Both inventory and order datasets use the same standardized 'ProductSKU' and 'LocationID', allowing seamless combination for stock analysis across locations.",
+      "Retail: All customer-facing systems (CRM, PoS, Online Store) use a globally unique 'CustomerMasterID', enabling a 360-degree customer view.",
+      "Healthcare: All clinical datasets within an organization use a common Master Patient Index (MPI) identifier, ensuring data can be reliably combined for patient care and research."
+    ]
+  },
+  {
+    "id": 9,
+    "damaId": 9,
+    "name": "Comparability of populations",
+    "category": "Data values",
+    "definition": "The degree to which data values representing two populations have the same definition and are measured in the same way.",
+    "unitOfMeasure": "Grade",
+    "icon": "bi-people",
+    "examplePoor": [
+      "Logistics: Comparing 'Revenue' from Terminal A (which includes Value Added Services income) with 'Revenue' from Terminal B (which only includes handling charges) gives misleading performance results.",
+      "Education: Comparing student test scores from two different regions where one region uses a standardized national test and the other uses a locally developed test.",
+      "Marketing: Comparing 'customer satisfaction' scores from surveys conducted with different question phrasing or scales across two product lines."
+    ],
+    "exampleGood": [
+      "Logistics: Both terminals report 'Container Throughput' using the exact same counting rules (e.g., including/excluding transshipment moves consistently, same definition of TEU).",
+      "Education: Student performance across different schools is compared using results from the same standardized assessment administered under identical conditions.",
+      "Marketing: 'Website conversion rates' for different campaigns are compared using the same definition of 'conversion' and the same tracking methodology."
+    ]
+  },
+  {
+    "id": 10,
+    "damaId": 10,
+    "name": "Comparability over time",
+    "category": "Data values",
+    "definition": "The degree to which data values over time have the same definition and are measured in the same way.",
+    "unitOfMeasure": "Grade",
+    "icon": "bi-graph-up",
+    "examplePoor": [
+      "Logistics: The calculation method for 'Yard Utilization' changed last year without documentation or adjustment of historical data, making trend analysis unreliable.",
+      "Finance: The company changed its revenue recognition policy mid-year, but historical financial reports were not restated, making year-over-year comparisons inaccurate.",
+      "Environment: Air quality monitoring stations changed their sensor calibration methods, but historical readings were not adjusted, skewing long-term pollution trends."
+    ],
+    "exampleGood": [
+      "Logistics: The definition and measurement of 'Truck Turnaround Time' have remained consistent for the past 5 years, allowing accurate trend analysis and benchmarking.",
+      "Finance: Key financial ratios are calculated using consistent formulas and data sources across all reporting periods, enabling meaningful trend analysis.",
+      "Environment: A consistent methodology for measuring water pollutant levels has been used for a decade, allowing for reliable tracking of environmental changes."
+    ]
+  },
+  {
+    "id": 11,
+    "damaId": 11,
+    "name": "Completeness (Attributes)",
+    "category": "Attributes",
+    "definition": "The degree to which all required attributes in the dataset are present.",
+    "unitOfMeasure": "%",
+    "icon": "bi-check2-square",
+    "examplePoor": [
+      "Logistics: The 'Customer' dataset is missing the 'Tax ID' attribute, which is required for compliant invoicing in certain regions.",
+      "Product Management: A new 'Product' dataset schema omits the 'Country of Origin' attribute, which is legally required for import/export documentation.",
+      "HR: The employee dataset template does not include an attribute for 'Emergency Contact Information'."
+    ],
+    "exampleGood": [
+      "Logistics: The 'Supplier' dataset includes all necessary attributes like Name, Address, Tax ID, Contact Person, and Payment Terms.",
+      "Product Management: The 'Item Master' dataset schema contains all mandatory attributes such as 'Item Description', 'Unit of Measure', 'Weight', 'Dimensions', and 'Safety Stock Level'.",
+      "HR: The 'Employee' dataset design includes attributes for all legally required information plus essential operational fields."
+    ]
+  },
+  {
+    "id": 12,
+    "damaId": 12,
+    "name": "Completeness (Records)",
+    "category": "Records",
+    "definition": "The degree to which all required records in the dataset are present.",
+    "unitOfMeasure": "%",
+    "icon": "bi-check2-square",
+    "examplePoor": [
+      "Logistics: Daily gate transaction log missing records for several hours due to a system outage, skewing throughput reports.",
+      "Healthcare: Not all patient encounters or administered medications are being recorded in the EHR system, leading to incomplete medical histories and potential safety risks.",
+      "Sales: The CRM is missing contact records for key accounts that were onboarded last quarter due to a data import failure."
+    ],
+    "exampleGood": [
+      "Logistics: Vessel arrival notification feed contains records for all expected vessel calls based on port schedules.",
+      "Healthcare: All diagnostic test results ordered for patients are successfully recorded and linked to the respective patient record within 24 hours.",
+      "Sales: Every lead generated from the website inquiry form is successfully created as a new lead record in the sales automation system."
+    ],
+    "damaAppendix3Title": "Completeness (1)",
+    "synonyms": ["Coverage"],
+    "relatedDamaDimensionIds": [],
+    "indicators": ["Percentage or number of the required records that are present."],
+    "notes": [
+      "Not all products are present in a product file.",
+      "Not all inhabitants of a city are registered.",
+      "A file of trees also contains shrubs (superfluous records)",
+      "Incomplete records are also called missing units."
+    ]
+  },
+  {
+    "id": 13,
+    "damaId": 13,
+    "name": "Completeness (Data files)",
+    "category": "Data files",
+    "definition": "The degree to which all required data files are present.",
+    "unitOfMeasure": "%, Number",
+    "icon": "bi-check2-square",
+    "examplePoor": [
+      "Logistics: The monthly financial data feed from a subsidiary terminal is missing for the last two months.",
+      "Manufacturing: Daily production log files from one of the assembly lines were not received by the central data repository.",
+      "Retail: The point-of-sale system failed to upload the end-of-day transaction file for three stores yesterday."
+    ],
+    "exampleGood": [
+      "Logistics: All expected daily sensor reading files from equipment (e.g., cranes, RTGs) are received and processed by the IoT platform.",
+      "Manufacturing: All required compliance documentation files (e.g., safety inspection reports) for each piece of equipment are present in the asset management system.",
+      "Retail: The weekly sales data files from all regional offices are consistently delivered on time to the central analytics server."
+    ]
+  },
+  {
+    "id": 14,
+    "damaId": 14,
+    "name": "Completeness (Data values)",
+    "category": "Data values",
+    "definition": "The degree to which all required data values are present.",
+    "unitOfMeasure": "%",
+    "icon": "bi-check2-square",
+    "examplePoor": [
+      "Logistics: Dangerous goods flag (value) missing for a container carrying hazardous materials, leading to improper storage and safety risks.",
+      "Customer Service: The 'Resolution Code' field is blank for many closed customer support tickets, preventing analysis of issue resolution types.",
+      "Order Processing: The 'Shipping Address' field is empty in several customer orders, halting the fulfillment process."
+    ],
+    "exampleGood": [
+      "Logistics: All required flags (e.g., DG, Reefer Temperature Setting, Out-of-Gauge dimensions) have populated values for containers where applicable.",
+      "Customer Service: Every customer feedback record has a value for the 'Satisfaction Score' (e.g., 1-5 scale).",
+      "Order Processing: The 'Quantity Ordered' field contains a valid numerical value for every line item in an order."
+    ],
+    "damaAppendix3Title": "Completeness (2)",
+    "synonyms": [],
+    "relatedDamaDimensionIds": [],
+    "indicators": ["Percentage of the possible data values that are present."],
+    "notes": [
+        "In a product file the attribute supplier is not completed in every record.",
+        "In a questionnaire a respondent did not answer all questions.",
+        "Incomplete data values are also called missing values."
+    ]
+  },
+  {
+    "id": 15,
+    "damaId": 15,
+    "name": "Completeness (Data values of an attribute)",
+    "category": "Data values of an attribute",
+    "definition": "The degree to which all required data values of an attribute are present.",
+    "unitOfMeasure": "%",
+    "icon": "bi-check2-square",
+    "examplePoor": [
+      "Logistics: Many records in the 'Customer' table have a blank 'PhoneNumber' field, hindering communication for delivery coordination.",
+      "HR: The 'Date of Birth' attribute is missing for 20% of employee records, impacting benefits administration.",
+      "Inventory: The 'Stock Location' attribute is null for a significant number of items in the warehouse management system, making them hard to find."
+    ],
+    "exampleGood": [
+      "Logistics: The 'ContainerStatus' attribute has a non-null value (e.g., 'In Yard', 'On Vessel', 'Gated Out') for every container record in the TOS.",
+      "HR: The 'EmployeeID' attribute is populated for 100% of the records in the active employee table.",
+      "Inventory: The 'Last Stock Count Date' attribute is filled for all items that underwent a recent cycle count."
+    ]
+  },
+  {
+    "id": 16,
+    "damaId": 16,
+    "name": "Completeness (Metadata)",
+    "category": "Metadata",
+    "definition": "The degree to which the metadata are fully described.",
+    "unitOfMeasure": "%",
+    "icon": "bi-check2-square",
+    "examplePoor": [
+      "Logistics: Data dictionary definition for 'TEU Factor' is ambiguous or missing crucial details like how different container sizes are converted.",
+      "Finance: The metadata for a financial report lacks information on the source systems for each data element or the last refresh date.",
+      "Data Science: A dataset provided for analysis has no metadata describing the meaning of column headers or the range of possible values."
+    ],
+    "exampleGood": [
+      "Logistics: Metadata clearly defines 'Dwell Time' calculation, including source systems, specific filters applied, the unit of measure, and business owner.",
+      "Finance: A data catalog provides comprehensive metadata for all key financial metrics, including business definitions, technical lineage, data steward, and update frequency.",
+      "Data Science: Each dataset in the repository is accompanied by metadata detailing its schema, data types, descriptions of variables, collection methods, and known limitations."
+    ]
+  },
+  {
+    "id": 17,
+    "damaId": 17,
+    "name": "Compliance with laws, regulations, or standards (Data)",
+    "category": "Data",
+    "definition": "The degree to which data is in accordance with laws, regulations, or standards.",
+    "unitOfMeasure": "Story",
+    "icon": "bi-shield-check",
+    "examplePoor": [
+      "Logistics: Storing customer personal data (e.g., consignee contact details) without required consent or for longer than permitted violates GDPR.",
+      "Healthcare: Patient records are not de-identified according to HIPAA standards before being used for research.",
+      "Finance: Financial transaction data does not include all fields required by anti-money laundering (AML) regulations."
+    ],
+    "exampleGood": [
+      "Logistics: Hazardous material data includes all fields (e.g., UN number, proper shipping name) required by international shipping regulations (IMDG Code).",
+      "Healthcare: All patient data handling processes adhere to GDPR or HIPAA requirements for consent, security, and breach notification.",
+      "Finance: Customer identification data collected during onboarding meets Know Your Customer (KYC) regulatory requirements."
+    ]
+  },
+  {
+    "id": 18,
+    "damaId": 18,
+    "name": "Compliance with laws, regulations, or standards (Composition of datasets)",
+    "category": "Composition of datasets",
+    "definition": "The degree to which the composition of datasets is in accordance with laws, regulations, or standards.",
+    "unitOfMeasure": "Story",
+    "icon": "bi-shield-check",
+    "examplePoor": [
+      "Logistics: Combining employee performance data with anonymous survey data in a way that inadvertently allows re-identification of individuals, violating privacy policies.",
+      "Marketing: Creating customer profiles by combining data from various sources without explicit consent for such aggregation, potentially violating data privacy laws.",
+      "Research: A dataset compiled for public release aggregates sensitive demographic data in such a way that small population groups could be identified, breaching ethical guidelines."
+    ],
+    "exampleGood": [
+      "Logistics: Aggregated financial reports derived from multiple subsidiary datasets comply with IFRS or GAAP reporting standards.",
+      "Marketing: Customer segments created for targeted advertising are based on aggregated, anonymized data that respects privacy regulations and user consent.",
+      "Research: When combining datasets for a study, all data linkage and aggregation methods follow strict protocols to maintain anonymity and comply with IRB approvals."
+    ]
+  },
+  {
+    "id": 19,
+    "damaId": 19,
+    "name": "Confidentiality",
+    "category": "Data",
+    "definition": "The degree to which disclosure of data should be restricted to authorized data consumers.",
+    "unitOfMeasure": "Grade",
+    "icon": "bi-shield-lock",
+    "examplePoor": [
+      "Logistics: Competitively sensitive customer contract details and pricing information are accessible by unauthorized personnel or through poorly secured APIs.",
+      "HR: Employee salary and performance review data is stored in a shared folder accessible to all network users.",
+      "R&D: Unpatented research findings and new product designs are stored on systems without adequate access controls, risking industrial espionage."
+    ],
+    "exampleGood": [
+      "Logistics: Access to sensitive financial data, such as terminal profitability reports, is strictly restricted based on user roles and multi-factor authentication.",
+      "HR: Personal Identifiable Information (PII) of employees is encrypted at rest and in transit, with access logged and audited regularly.",
+      "R&D: Intellectual property and trade secrets are stored in a highly secured environment with granular access permissions and continuous monitoring for unauthorized access attempts."
+    ]
+  },
+  {
+    "id": 20,
+    "damaId": 20, // Assuming this is the general "Consistency" from your list, which is closest to the first DAMA entry for Consistency
+    "name": "Consistency (Data values)", // General
+    "category": "Data values", // DAMA PDF's "Data values" for ID 20
+    "definition": "The degree to which data values of two sets of attributes comply with a rule.", // PDF uses a more elaborate definition here spanning multiple contexts
+    "unitOfMeasure": "%",
+    "icon": "bi-link-45deg",
+    "examplePoor": [
+      "Logistics: Terminal Operating System (TOS) shows a container in Yard Block A, but the Gate System shows the same container exited the terminal 1 hour ago.",
+      "Retail: The price of a product on the shelf tag is $9.99, but it scans at $10.99 at the point-of-sale.",
+      "Finance: The total sum of individual departmental budgets does not match the overall approved company budget in the financial planning system."
+    ],
+    "exampleGood": [
+      "Logistics: All systems (TOS, Gate System, Handheld Scanners) show the same, current, and accurate location for a specific container.",
+      "Retail: The product price listed on the e-commerce website matches the price in the inventory management system and the price at the physical store checkout.",
+      "Finance: The customer's outstanding balance in the billing system is identical to the balance shown in the accounts receivable ledger."
+    ],
+    "damaAppendix3Title": "Consistency",
+    "synonyms": [],
+    "relatedDamaDimensionIds": [38], // Plausibility
+    "indicators": ["Percentage of inconsistencies."],
+    "notes": [
+      "A company is registered in the city of Paris in the country of Belgium.",
+      "Overlap are gaps in file with address history of a person. For example: Address A from 1 Jan 2003 – 1 May 2019 and Address B from 1 March – until now."
+    ]
+  },
+  {
+    "id": 21,
+    "damaId": 21,
+    "name": "Consistency (Temporal)", // Your name: "Data values of a set of attributes of a dataset at different points in time"
+    "category": "Data values of a set of attributes of a dataset at different points in time (temporal consistency)", // DAMA PDF Data Concept
+    "definition": "The degree to which the data values of a set of attributes of a dataset at different points in time comply with a rule.",
+    "unitOfMeasure": "%",
+    "icon": "bi-link-45deg",
+    "examplePoor": [
+      "Logistics: A container's status changes from 'Gated Out' back to 'In Yard' in the system's event log without a corresponding gate-in event record.",
+      "Banking: A customer's account balance for yesterday is reported as $100, but today's report for the same historical date shows $150 without any correcting transaction.",
+      "Inventory: The stock level of an item is recorded as 50 units at 9 AM, then 40 units at 10 AM (due to a sale), but then back to 50 units at 11 AM without any new stock arrival record."
+    ],
+    "exampleGood": [
+      "Logistics: Monthly revenue figures consistently sum up to the correct quarterly and annual totals when aggregated over time.",
+      "Banking: An account's transaction history, when replayed, always results in the currently reported balance.",
+      "Inventory: If an item's stock level decreases, there is a corresponding sales or stock adjustment record; if it increases, there's a purchase or return record."
+    ]
+  },
+  {
+    "id": 22,
+    "damaId": 22,
+    "name": "Consistency (Across Datasets)", // Your name: "Data values of two sets of attributes between datasets"
+    "category": "Data values of two sets of attributes between datasets (across datasets)", // DAMA PDF Data Concept
+    "definition": "The degree to which data values of two sets of attributes between datasets comply with a rule.",
+    "unitOfMeasure": "%",
+    "icon": "bi-link-45deg",
+    "examplePoor": [
+      "Logistics: Total container moves reported in the operational system for a vessel do not match the total moves used for billing that vessel in the financial system.",
+      "HR: The number of active employees in the HR payroll system differs from the number of active user accounts in the IT directory.",
+      "Manufacturing: The quantity of raw materials consumed reported by the production system does not align with the quantity depleted from the inventory system."
+    ],
+    "exampleGood": [
+      "Logistics: Customer ID in the Orders dataset successfully matches a valid and active Customer ID in the Customer Master dataset.",
+      "HR: The list of employees eligible for a bonus in the performance management system is identical to the list used by payroll for bonus disbursement.",
+      "Manufacturing: The bill of materials (BOM) in the engineering system is consistent with the BOM used by the procurement system for ordering components."
+    ]
+  },
+  {
+    "id": 23,
+    "damaId": 23,
+    "name": "Consistency (Cross-Record)", // Your name: "Data values of two sets of attributes between records"
+    "category": "Data values of two sets of attributes between records (cross record)", // DAMA PDF Data Concept
+    "definition": "The degree to which data values of two sets of attributes between records comply with a rule.",
+    "unitOfMeasure": "%",
+    "icon": "bi-link-45deg",
+    "examplePoor": [
+      "Logistics: Two different employee records in the HR system show the same unique Social Security Number.",
+      "E-commerce: Multiple customer records exist with the exact same email address but different customer IDs.",
+      "Asset Management: Two distinct asset records in the maintenance system share the same unique serial number."
+    ],
+    "exampleGood": [
+      "Logistics: All orders belonging to the same shipment share the same unique Vessel Voyage number.",
+      "E-commerce: Within a single order, all line items correctly reference the same unique Order ID.",
+      "Asset Management: All maintenance tasks scheduled for a specific piece of equipment correctly link to that equipment's unique asset ID."
+    ]
+  },
+  {
+    "id": 24,
+    "damaId": 24,
+    "name": "Consistency (Record-Level)", // Your name: "Data values of two sets of attributes within a record"
+    "category": "Data values of two sets of attributes within a record (record level)", // DAMA PDF Data Concept
+    "definition": "The degree to which data values of two sets of attributes within a record comply with a rule.",
+    "unitOfMeasure": "%",
+    "icon": "bi-link-45deg",
+    "examplePoor": [
+      "Logistics: A shipment record shows 'DateShipped' is earlier than 'DateBooked'.",
+      "HR: An employee record has a 'TerminationDate' that is before their 'HireDate'.",
+      "Finance: An invoice record has a 'DueDate' earlier than its 'IssueDate'."
+    ],
+    "exampleGood": [
+      "Logistics: In an employee record, 'HireDate' is always earlier than or equal to 'TerminationDate' (if the latter is present).",
+      "HR: An employee's age calculated from 'DateOfBirth' is consistent with their listed 'AgeGroup' category.",
+      "Finance: In a loan application record, the 'LoanAmountRequested' is less than or equal to the 'MaximumLoanAmountAllowed' for that loan type."
+    ]
+  },
+  {
+    "id": 25,
+    "damaId": 25,
+    "name": "Credibility",
+    "category": "Data values",
+    "definition": "The degree to which data values are regarded as true and believable by data consumers.",
+    "unitOfMeasure": "Grade",
+    "icon": "bi-person-check",
+    "examplePoor": [
+      "Logistics: Users distrust the sales forecast report for shipping volumes because past forecasts have been consistently and wildly inaccurate.",
+      "News Media: A news article citing data from an unverified source is met with skepticism by readers.",
+      "Market Research: A market share report based on a very small or biased sample size is not considered credible by industry analysts."
+    ],
+    "exampleGood": [
+      "Logistics: The vessel ETA provided by the terminal operating system is trusted because it's consistently updated with reliable AIS data and historical performance.",
+      "News Media: Financial data published by reputable government statistical agencies is generally considered highly credible.",
+      "Market Research: A clinical trial result published in a peer-reviewed journal with transparent methodology and data is seen as credible."
+    ]
+  },
+  {
+    "id": 26,
+    "damaId": 26,
+    "name": "Currency",
+    "category": "Data values",
+    "definition": "The degree to which data values are up to date.",
+    "unitOfMeasure": "%",
+    "icon": "bi-clock-history",
+    "examplePoor": [
+      "Logistics: Reefer container temperature shown in the monitoring system is from 2 hours ago. The cargo might have spoiled if the reefer unit failed since that last update.",
+      "Finance: The stock portfolio valuation on a trading platform displays prices from the previous day's close, not real-time market prices.",
+      "Customer Service: The customer's contact information in the CRM was last updated 3 years ago and is likely outdated."
+    ],
+    "exampleGood": [
+      "Logistics: Container location data is updated in near real-time (e.g., within seconds or minutes) as it moves through the yard or is scanned.",
+      "Finance: Foreign exchange rates used for international transactions are updated every few minutes from a reliable market feed.",
+      "Customer Service: A customer's shipping address is confirmed and updated (if necessary) during every new order placement."
+    ],
+    "damaAppendix3Title": "Currency",
+    "synonyms": [],
+    "relatedDamaDimensionIds": [53], // Timeliness (DAMA ID 53)
+    "indicators": ["Percentage of data that are up to date in a point of time."],
+    "notes": ["Outdated prices in the product file."]
+  },
+  {
+    "id": 27,
+    "damaId": 27,
+    "name": "Equivalence",
+    "category": "Attributes",
+    "definition": "The degree to which attributes stored in multiple datasets are conceptually equal.",
+    "unitOfMeasure": "%", // DAMA PDF says Story, but % could also apply if measuring # of non-equivalent attributes
+    "icon": "bi-arrow-left-right",
+    "examplePoor": [
+      "Logistics: One system uses 'CustID' (integer, primary key) while another system uses 'CustomerIdentifier' (alphanumeric string, business key) for the same customer concept, making automated joins difficult.",
+      "Product Management: 'ProductWeight' in the catalog system is in kilograms, while 'Item_Wt' in the shipping system is in pounds, for the same product attribute.",
+      "HR: 'Employee_Status' in one system might use codes ('A', 'T', 'L' for Active, Terminated, Leave) while another uses full text ('Active', 'Former Employee', 'On Leave')."
+    ],
+    "exampleGood": [
+      "Logistics: Both the terminal planning system and the execution system use the attribute 'VesselVoyageID' with the same definition, data type, and format.",
+      "Product Management: All systems that store product dimensions (length, width, height) use the same attribute names (e.g., 'ProductLengthCM', 'ProductWidthCM', 'ProductHeightCM') and consistently use centimeters as the unit.",
+      "HR: The attribute 'EmployeeStartDate' has the exact same meaning (first day of employment) and date format across the HRIS, payroll, and benefits systems."
+    ]
+  },
+  {
+    "id": 28,
+    "damaId": 28,
+    "name": "Granularity (Attributes)",
+    "category": "Attributes",
+    "definition": "The degree to which a single characteristic is subdivided in attributes.",
+    "unitOfMeasure": "Story",
+    "icon": "bi-grid-1x2",
+    "examplePoor": [
+      "Logistics: A single 'Address' attribute in the customer table holds the entire address: Street, City, Postal Code, and Country, making it hard to query by city.",
+      "Contact Management: A 'FullName' attribute stores first name, middle name, and last name together.",
+      "Event Logging: A single 'EventDetails' attribute contains timestamp, event type, and user ID concatenated together."
+    ],
+    "exampleGood": [
+      "Logistics: 'Address' is broken down into separate, well-defined attributes: StreetAddress, City, PostalCode, State, Country.",
+      "Contact Management: 'FirstName', 'MiddleName', 'LastName' are stored as distinct attributes.",
+      "Event Logging: 'EventTimestamp', 'EventType', 'UserID' are stored as individual attributes for easier filtering and analysis."
+    ]
+  },
+  {
+    "id": 29,
+    "damaId": 29,
+    "name": "Granularity (Records)",
+    "category": "Records",
+    "definition": "The degree to which objects are aggregated to records.",
+    "unitOfMeasure": "Story",
+    "icon": "bi-grid-1x2",
+    "examplePoor": [
+      "Logistics: Sales data for container movements is only available aggregated at the monthly level, preventing analysis of daily operational trends or peak hour demands.",
+      "Retail: Website traffic data is only stored as daily summaries, losing information about user navigation paths or hourly visit patterns.",
+      "Manufacturing: Quality control checks are recorded only as a pass/fail summary per batch, not detailing individual item defects within the batch."
+    ],
+    "exampleGood": [
+      "Logistics: Gate transactions are recorded individually for each container move (in and out), allowing detailed analysis by hour, shift, day, or truck company.",
+      "Retail: Every click and page view on the e-commerce site is logged as an individual event record, enabling detailed customer journey analysis.",
+      "Manufacturing: Each individual product unit coming off the assembly line has its own quality inspection record detailing all measurements and checks."
+    ]
+  },
+  {
+    "id": 30,
+    "damaId": 30,
+    "name": "Integrity",
+    "category": "Data values",
+    "definition": "The degree of absence of data value loss or corruption.",
+    "unitOfMeasure": "%",
+    "icon": "bi-gem",
+    "examplePoor": [
+      "Logistics: Data transmission errors cause container numbers to be corrupted (e.g., 'MSCU12?4567' instead of 'MSCU1234567') during EDI exchange.",
+      "Database: A database restore process fails, and a portion of transaction data from the last backup is permanently lost.",
+      "File Transfer: A large CSV file is truncated during FTP transfer, resulting in incomplete records in the destination system."
+    ],
+    "exampleGood": [
+      "Logistics: Checksums and validation rules are used during data transmission to ensure container details are not corrupted when moving between systems.",
+      "Database: Robust backup and recovery procedures are in place, and regular tests confirm that data can be restored completely and without corruption.",
+      "File Transfer: Secure file transfer protocols (like SFTP) with built-in error checking are used to ensure complete and uncorrupted file delivery."
+    ]
+  },
+  {
+    "id": 31,
+    "damaId": 31,
+    "name": "Interpretability",
+    "category": "Data",
+    "definition": "The degree to which data are in an appropriate language and units of measure.",
+    "unitOfMeasure": "%",
+    "icon": "bi-info-circle",
+    "examplePoor": [
+      "Logistics: A report shows 'Container Weight' as a numerical value but doesn't specify if it's in kilograms (KG) or pounds (LBS).",
+      "International Trade: Product descriptions are only available in one language, making them difficult for international partners to understand.",
+      "Scientific Data: A dataset contains a column labeled 'Temp' with numerical values, but no indication of whether it's Celsius, Fahrenheit, or Kelvin."
+    ],
+    "exampleGood": [
+      "Logistics: All financial reports clearly state the currency used (e.g., USD, EUR, JPY) for all monetary values.",
+      "International Trade: Product specifications are available in multiple languages, and all measurements clearly state their units (e.g., 'Length: 10 meters', 'Weight: 500 Kilograms').",
+      "Scientific Data: All data values are accompanied by metadata defining their units (e.g., 'Temperature (Celsius)', 'Pressure (Pascals)')."
+    ]
+  },
+  {
+    "id": 32,
+    "damaId": 32,
+    "name": "Latency",
+    "category": "Data",
+    "definition": "The period of time between the point when the data is created and the point when it is available for use.",
+    "unitOfMeasure": "Duration",
+    "icon": "bi-clock-history",
+    "examplePoor": [
+      "Logistics: It takes 24 hours for gate move data (container entering/leaving terminal) to appear in the central reporting system, delaying operational analysis.",
+      "Financial Trading: Real-time stock price data feed has a 15-minute delay, making it unsuitable for high-frequency trading decisions.",
+      "Emergency Services: GPS location updates from emergency vehicles are delayed by 5 minutes, impacting dispatch efficiency."
+    ],
+    "exampleGood": [
+      "Logistics: Real-time crane position data and reefer temperature alerts are available to the planning and monitoring systems within seconds of the event.",
+      "Financial Trading: A low-latency market data feed provides stock price updates within milliseconds of market changes.",
+      "Emergency Services: Ambulance location data is transmitted to the dispatch center with sub-second latency."
+    ]
+  },
+  {
+    "id": 33,
+    "damaId": 33,
+    "name": "Linkability",
+    "category": "Data files",
+    "definition": "The degree to which records of one data file can be correctly coupled with records of another data file.",
+    "unitOfMeasure": "%",
+    "icon": "bi-link",
+    "examplePoor": [
+      "Logistics: Inconsistent formatting or typos in vessel names (e.g., 'MSC New York' vs 'MSC_NewYork' vs 'MSCNWY') prevents accurately linking vessel schedule data with operational data for that vessel.",
+      "Customer Management: The customer ID in the sales order system is a different format than the customer ID in the support ticket system, making it hard to get a unified view of customer interactions.",
+      "Healthcare: Patient records from different clinics use different identifier schemes with no common key, making it impossible to link a patient's full medical history."
+    ],
+    "exampleGood": [
+      "Logistics: Using standardized, globally unique container IDs (ISO 6346) allows reliably linking information about a container from the Terminal Operating System, gate system, customs declarations, and shipping line manifest.",
+      "Customer Management: A master customer ID is used consistently across all systems (CRM, ERP, Marketing Automation), enabling a complete view of the customer journey.",
+      "Healthcare: A Master Patient Index (MPI) provides a unique identifier for each patient, allowing their records from various departments (radiology, lab, pharmacy) to be correctly linked."
+    ]
+  },
+  {
+    "id": 34,
+    "damaId": 34,
+    "name": "Metadata compliance",
+    "category": "Data values",
+    "definition": "The degree to which the data values are in accordance with their definition, format specification and value domain.",
+    "unitOfMeasure": "%",
+    "icon": "bi-shield-check",
+    "examplePoor": [
+      "Logistics: A 'ContainerType' field, defined in metadata to accept values like '20GP', '40HC', sometimes contains invalid codes like '20 Standard' or free text.",
+      "Finance: An 'InvoiceDate' field, specified to be in YYYY-MM-DD format, contains values like '15/03/2024' or 'March 15, 2024'.",
+      "HR: An 'EmployeeStatusCode' field, with a defined value domain of {Active, Terminated, OnLeave}, contains an unexpected value like 'Pending_Review'."
+    ],
+    "exampleGood": [
+      "Logistics: All values in the 'ContainerLength' field are valid lengths (e.g., 20, 40, 45) as per its defined value domain and data type (integer).",
+      "Finance: All transaction amounts in the 'TransactionValue' field adhere to the defined format (e.g., numeric with two decimal places) and are within a plausible range (e.g., not negative for sales).",
+      "HR: The 'DepartmentID' in employee records always corresponds to a valid ID present in the official 'Departments' reference table."
+    ]
+  },
+  {
+    "id": 35,
+    "damaId": 35,
+    "name": "Naturalness",
+    "category": "Composition of datasets",
+    "definition": "The degree to which the composition of datasets is aligned with the real-world objects that they represent.",
+    "unitOfMeasure": "Grade",
+    "icon": "bi-tree",
+    "examplePoor": [
+      "Logistics: Storing individual container move details, vessel visit information, and customer billing data all within the same highly complex, denormalized table.",
+      "E-commerce: A single 'Product' table contains attributes for physical products, digital downloads, and service subscriptions, making the schema overly complicated and hard to manage.",
+      "University: A 'Student_Course_Enrollment_Grade_Faculty' dataset combines too many distinct real-world concepts, leading to data redundancy and update anomalies."
+    ],
+    "exampleGood": [
+      "Logistics: Having separate, well-defined datasets (or tables) for Vessels, Containers, Moves, Customers, and Invoices, each reflecting distinct real-world entities and their relationships.",
+      "E-commerce: Separate datasets for 'Products', 'Customers', 'Orders', and 'Order_Items' naturally model the business domain.",
+      "University: Datasets are structured around 'Students', 'Courses', 'Faculty', and 'Enrollments', aligning with how the university actually operates and thinks about its data."
+    ]
+  },
+  {
+    "id": 36,
+    "damaId": 36,
+    "name": "Objectivity",
+    "category": "Data values",
+    "definition": "The degree to which the data values are created in an unbiased manner.",
+    "unitOfMeasure": "Grade",
+    "icon": "bi-person",
+    "examplePoor": [
+      "Logistics: Sales forecasts for shipping volumes are consistently overestimated due to overly optimistic assumptions from the sales team who are incentivized on targets.",
+      "Performance Reviews: Employee performance ratings are subjectively influenced by a manager's personal relationship with the employee rather than objective criteria.",
+      "Surveys: Leading questions in a customer satisfaction survey are designed to elicit positive responses, skewing the results."
+    ],
+    "exampleGood": [
+      "Logistics: Incident reports for equipment damage capture factual descriptions of events based on evidence, without assigning blame or making subjective judgments.",
+      "Performance Reviews: Employee evaluations are based on pre-defined, measurable Key Performance Indicators (KPIs) and documented achievements.",
+      "Surveys: Customer feedback is collected using neutral, well-phrased questions, and responses are analyzed without pre-conceived biases."
+    ]
+  },
+  {
+    "id": 37,
+    "damaId": 37,
+    "name": "Obtainability",
+    "category": "Data",
+    "definition": "The degree to which the data can be acquired.",
+    "unitOfMeasure": "Grade",
+    "icon": "bi-key",
+    "examplePoor": [
+      "Logistics: Historical maintenance records for port equipment are stored only on paper archives in a remote, difficult-to-access location.",
+      "Market Research: Competitor pricing data is proprietary and not publicly available or easily purchasable.",
+      "Supply Chain: Real-time inventory levels from a key supplier are not shared electronically and require manual phone calls to obtain."
+    ],
+    "exampleGood": [
+      "Logistics: Weather forecast data relevant to port operations is easily and reliably obtained via a subscription to a meteorological service API.",
+      "Market Research: Publicly available government statistics on import/export volumes can be readily downloaded from official websites.",
+      "Supply Chain: Key suppliers provide access to their inventory data through a secure B2B portal or EDI feeds."
+    ]
+  },
+  {
+    "id": 38,
+    "damaId": 38,
+    "name": "Plausibility",
+    "category": "Data values",
+    "definition": "The degree to which data values match knowledge of the real world.",
+    "unitOfMeasure": "Story",
+    "icon": "bi-lightbulb",
+    "examplePoor": [
+      "Logistics: A container move is recorded in the system as taking only 0.1 seconds, which is physically impossible.",
+      "Healthcare: A patient's recorded age is 150 years, or their recorded body temperature is 5 degrees Celsius.",
+      "Retail: An order record shows a quantity of -10 for an item, or a product price of $0.00 for a high-value item."
+    ],
+    "exampleGood": [
+      "Logistics: Recorded vessel speeds are within the known operational range for that specific vessel type and current sea conditions.",
+      "Healthcare: A patient's recorded height and weight are within expected human physiological ranges.",
+      "Retail: The total order value is consistent with the sum of the prices of individual items and applied discounts."
+    ]
+  },
+  {
+    "id": 39,
+    "damaId": 39,
+    "name": "Portability (Data)",
+    "category": "Data",
+    "definition": "The degree to which data can be installed, replaced or moved from one system to another while preserving the existing quality.",
+    "unitOfMeasure": "Story",
+    "icon": "bi-file-earmark-zip", // Changed icon for differentiation
+    "examplePoor": [
+      "Logistics: Data exported from the legacy terminal operating system is in a proprietary binary format that is unusable by the new system without complex, lossy conversion.",
+      "CRM: Customer data is locked into a specific cloud CRM vendor's platform with no easy way to export it completely and accurately for migration to another CRM.",
+      "Archival: Historical data archived in an obsolete software format can no longer be opened or read by current applications."
+    ],
+    "exampleGood": [
+      "Logistics: Master data for customers, vessels, and locations can be exported from the current system in standard, open formats like CSV or JSON, allowing for easy migration or sharing with other systems.",
+      "CRM: The CRM system allows full export of all customer data, including custom fields and attachments, in a well-documented, non-proprietary format.",
+      "Archival: Data is archived using industry-standard formats (e.g., XML, Parquet) along with its schema and metadata, ensuring long-term accessibility and usability."
+    ]
+  },
+  {
+    "id": 40,
+    "damaId": 40,
+    "name": "Portability (Format)",
+    "category": "Format",
+    "definition": "The degree to which a format can be applied in a wide range of situations.",
+    "unitOfMeasure": "Story",
+    "icon": "bi-file-earmark-code",
+    "examplePoor": [
+      "Logistics: Using a highly specific, internal XML schema for data exchange that external partners or new software cannot easily parse or adapt to.",
+      "Reporting: Financial reports are generated only in a proprietary ".xyz" file format that can only be opened by one specific, outdated software.",
+      "Collaboration: Project plans are created using a niche project management tool whose file format is not compatible with commonly used tools by contractors."
+    ],
+    "exampleGood": [
+      "Logistics: Adopting industry-standard EDI formats (e.g., EDIFACT IFTMIN for booking instructions) or widely supported APIs (e.g., RESTful JSON) for exchanging shipping information with partners.",
+      "Reporting: Generating reports in common formats like PDF, CSV, and XLSX ensures they can be easily viewed and used by various stakeholders and software.",
+      "Collaboration: Using standard office document formats (.docx, .pptx, .xlsx) or cloud-based platforms with broad compatibility for sharing project documentation."
+    ]
+  },
+  {
+    "id": 41,
+    "damaId": 41,
+    "name": "Precision (1 - Recording Accuracy)",
+    "category": "Data values",
+    "definition": "The degree of accuracy with which data values are recorded or classified.",
+    "unitOfMeasure": "Depends on data or metadata",
+    "icon": "bi-rulers", // Changed icon
+    "examplePoor": [
+      "Logistics: Recording container temperatures only to the nearest 5 degrees Celsius when the cargo requires monitoring to +/- 0.5 degrees.",
+      "Manufacturing: Measuring component dimensions only to the nearest millimeter when engineering tolerances require micron-level precision.",
+      "Finance: Rounding all currency transactions to the nearest dollar when cents are significant for accounting."
+    ],
+    "exampleGood": [
+      "Logistics: Measuring vessel draft to the nearest centimeter, providing the necessary precision for safe navigation and berth planning.",
+      "Manufacturing: Using calibrated instruments to measure product weights to the nearest gram, as required by quality control standards.",
+      "Finance: Recording financial transactions with precision to the smallest currency unit (e.g., cents, pence) as defined by accounting standards."
+    ]
+  },
+  {
+    "id": 42,
+    "damaId": 42,
+    "name": "Precision (2 - Statistical Spread)",
+    "category": "Data values",
+    "definition": "The degree to which the error in data values spreads around zero (in statistics).",
+    "unitOfMeasure": "%", // Or could be a statistical measure like standard deviation
+    "icon": "bi-graph-down", // Changed icon
+    "examplePoor": [
+      "Logistics: Weight measurements from a specific, uncalibrated scale consistently read 5kg too high (low precision because of systematic bias, although individual readings might be close to each other).",
+      "Scientific Measurement: Readings from a sensor show very wide random variations around the true value, even if the average is correct (high variance = low precision).",
+      "Polling: A political poll with a very small sample size has a large margin of error, meaning the results are not very precise."
+    ],
+    "exampleGood": [
+      "Logistics: Repeated measurements of the same standard weight on a calibrated scale show very small random variations around the true value (high precision, low random error).",
+      "Scientific Measurement: An instrument provides readings that are tightly clustered around the actual value being measured, with minimal random scatter.",
+      "Polling: A well-designed survey with a large, representative sample yields results with a small margin of error, indicating high precision."
+    ]
+  },
+  {
+    "id": 43,
+    "damaId": 43,
+    "name": "Punctuality",
+    "category": "Dataset availability",
+    "definition": "The degree to which the period between the actual and target point of time of availability of a dataset is appropriate.",
+    "unitOfMeasure": "Duration",
+    "icon": "bi-clock-fill", // Changed icon
+    "examplePoor": [
+      "Logistics: The daily sales report for container volumes, expected by 9 AM for the morning planning meeting, often arrives after midday.",
+      "Finance: Month-end financial statements, required by the 5th working day, are consistently delivered on the 10th.",
+      "Supply Chain: Advance shipping notices (ASNs) from a supplier, due 24 hours before delivery, frequently arrive only a few hours before or even after the goods."
+    ],
+    "exampleGood": [
+      "Logistics: Vessel stowage plans are consistently available in the system 24 hours before estimated vessel arrival, as per the agreed service level.",
+      "Finance: Regulatory compliance reports are submitted to the authorities by the official deadline without exception.",
+      "Supply Chain: Daily inventory status files from third-party warehouses are received every morning by 8 AM as scheduled."
+    ],
+    "damaAppendix3Title": "Punctuality",
+    "synonyms": [],
+    "relatedDamaDimensionIds": [53], // Timeliness
+    "indicators": [
+        "The period between the actual and target point in time of availability of a dataset (days, hours, minutes).",
+        "Percentage of times that datasets were available too late (or too early)."
+    ],
+    "notes": [
+        "The dataset should be available on 1 July 2020 but is released on 3 July 2020. Too late.",
+        "The dataset should be available on 1 July 2020 at 10:00 am but is released at 9.45 am. Too early.",
+        "A dataset can also consist of one transaction.",
+        "If no target time is agreed or planned, punctuality cannot be measured."
+    ]
+  },
+  {
+    "id": 44,
+    "damaId": 44,
+    "name": "Reasonability",
+    "category": "Data pattern",
+    "definition": "The degree to which a data pattern meets expectations.",
+    "unitOfMeasure": "Grade",
+    "icon": "bi-graph-up-arrow",
+    "examplePoor": [
+      "Logistics: Reported daily container throughput for the terminal suddenly drops to zero for a full day without any explanation (e.g., not a public holiday, no known strike or system outage).",
+      "Retail: Online sales figures show a 1000% increase overnight for a specific product without any corresponding marketing campaign or external event.",
+      "Utility: Water consumption for a household shows a sustained tenfold increase compared to its historical average, suggesting a possible leak or meter malfunction."
+    ],
+    "exampleGood": [
+      "Logistics: Monthly maintenance costs for port equipment show expected seasonal variations (e.g., higher in off-peak seasons when more maintenance can be scheduled).",
+      "Retail: Sales of winter clothing show an expected increase during colder months and a decrease during summer.",
+      "Utility: Electricity usage patterns for a commercial building align with its known business hours and operational load."
+    ]
+  },
+  {
+    "id": 45,
+    "damaId": 45,
+    "name": "Recoverability",
+    "category": "Datasets",
+    "definition": "The degree to which datasets are preserved in the event of incident.",
+    "unitOfMeasure": "Story",
+    "icon": "bi-save",
+    "examplePoor": [
+      "Logistics: Critical operational data from the Terminal Operating System is only stored locally on a single server with no automated backups or disaster recovery plan.",
+      "Finance: The only copy of the company's general ledger database exists on a primary server; a hardware failure could lead to permanent data loss.",
+      "Research: Years of irreplaceable research data are stored on a single external hard drive without any secondary copies."
+    ],
+    "exampleGood": [
+      "Logistics: Databases for critical systems are backed up daily to an offsite, secure location, with regularly tested recovery procedures to ensure data can be restored within a defined Recovery Time Objective (RTO).",
+      "Finance: Financial systems utilize database replication to a secondary disaster recovery site, allowing for quick failover and minimal data loss in case of a primary site outage.",
+      "Research: Research datasets are backed up to multiple locations, including cloud storage, and version control is used to track changes and allow rollback if needed."
+    ]
+  },
+  {
+    "id": 46,
+    "damaId": 46,
+    "name": "Redundancy",
+    "category": "Data",
+    "definition": "The degree to which logically identical data are stored more than once.",
+    "unitOfMeasure": "Number", // Can also be % of redundant records/fields
+    "icon": "bi-files",
+    "examplePoor": [
+      "Logistics: Customer address information is stored redundantly in the sales system, billing system, and shipping system, leading to inconsistencies when an address changes and isn't updated in all places.",
+      "HR: Employee emergency contact details are captured in the HRIS, a separate departmental spreadsheet, and a local manager's contact list.",
+      "Product Management: The same product specifications (e.g., dimensions, weight) are manually entered and stored in the ERP, the e-commerce platform, and the marketing collateral database."
+    ],
+    "exampleGood": [
+      "Logistics: Customer address is stored once in a central Customer Master Data system, and all other systems reference this single source of truth.",
+      "HR: Employee data is mastered in the HRIS, and other systems requiring employee information access it via integration or replication from this authoritative source.",
+      "Product Management: Product Information Management (PIM) system acts as the central repository for all product data, which is then syndicated to other channels."
+    ]
+  },
+  {
+    "id": 47,
+    "damaId": 47,
+    "name": "Referential integrity",
+    "category": "Data files",
+    "definition": "The degree to which data values of the primary key of one data file and data values of the foreign key of another data file are equal.",
+    "unitOfMeasure": "%",
+    "icon": "bi-link",
+    "examplePoor": [
+      "Logistics: An order record in the sales system references a Customer ID that no longer exists (or never existed) in the customer master table, creating an 'orphan' record.",
+      "University: An enrollment record links to a 'CourseID' that has been deleted from the official course catalog.",
+      "Manufacturing: A production order references a 'PartNumber' in its bill of materials that is not defined in the item master data."
+    ],
+    "exampleGood": [
+      "Logistics: All foreign keys in the shipment table (e.g., VesselID, PortOfLoadingID, CustomerID) correctly reference existing primary keys in their respective master tables (Vessel, Port, Customer).",
+      "University: Database constraints ensure that a student cannot be enrolled in a course unless the 'CourseID' exists in the 'Courses' table and the 'StudentID' exists in the 'Students' table.",
+      "Manufacturing: The ERP system enforces referential integrity, preventing the creation of work orders if any component part numbers in the BOM do not exist in the material master."
+    ]
+  },
+  {
+    "id": 48,
+    "damaId": 48,
+    "name": "Relevance",
+    "category": "Composition of datasets",
+    "definition": "The degree to which the composition of datasets meets the needs of the data consumer.",
+    "unitOfMeasure": "Story", // Can also be Grade
+    "icon": "bi-filter-circle",
+    "examplePoor": [
+      "Logistics: A safety incident report for yard operations includes highly detailed equipment maintenance logs from the past 5 years, which are not directly relevant to analyzing the specific incident.",
+      "Marketing: A weekly sales performance dashboard sent to regional sales managers includes detailed IT system server logs, which they don't need or understand.",
+      "Executive Reporting: A monthly financial summary for the CEO is cluttered with hundreds of line-item transaction details instead of focusing on key performance indicators and trends."
+    ],
+    "exampleGood": [
+      "Logistics: The sales performance dashboard provided to account managers includes only the KPIs directly related to their sales targets, customer activity, and pipeline for their assigned accounts.",
+      "Marketing: A campaign analysis report focuses on metrics relevant to campaign objectives, such as click-through rates, conversion rates, and cost per acquisition, omitting irrelevant operational data.",
+      "Executive Reporting: A concise executive dashboard presents high-level summaries of financial health, market share, and strategic goal progress, with drill-down capabilities for details if needed."
+    ]
+  },
+  {
+    "id": 49,
+    "damaId": 49,
+    "name": "Reliability",
+    "category": "Initial data value", // This is quite specific, could also be interpreted more broadly as data source reliability
+    "definition": "The closeness of the initial data value to the subsequent data value.",
+    "unitOfMeasure": "%", // Or a statistical measure of variance
+    "icon": "bi-arrow-repeat",
+    "examplePoor": [
+      "Logistics: Sensor readings for reefer container temperatures fluctuate wildly (e.g., jumping between -10°C and +5°C every few seconds) even when the actual measured condition is stable, indicating a faulty sensor or transmission.",
+      "Manufacturing: A weighing scale gives significantly different readings for the same item when weighed multiple times in quick succession.",
+      "Environmental Monitoring: An air quality sensor produces highly erratic CO2 level readings that don't correlate with known environmental conditions or other nearby sensors."
+    ],
+    "exampleGood": [
+      "Logistics: Repeated readings of a container's internal temperature under stable ambient conditions and reefer setpoint yield very similar values (e.g., within +/- 0.2°C).",
+      "Manufacturing: A calibrated torque wrench consistently applies the same amount of force when tested repeatedly on a test rig.",
+      "Environmental Monitoring: A water quality sensor provides stable and consistent pH readings when sampling from a controlled, stable solution."
+    ]
+  },
+  {
+    "id": 50,
+    "damaId": 50,
+    "name": "Reproducibility",
+    "category": "Dataset",
+    "definition": "The degree to which a dataset can be recreated with the same data values.",
+    "unitOfMeasure": "Story", // Can also be Boolean (Yes/No)
+    "icon": "bi-arrow-clockwise",
+    "examplePoor": [
+      "Logistics: Running the same 'Monthly Throughput Report' query at different times yields slightly different results due to underlying operational data changes not being versioned or timestamped for historical reporting.",
+      "Scientific Research: A published research paper's results cannot be replicated by other scientists because the original dataset or the exact data processing steps are not available or documented.",
+      "Financial Modeling: A complex financial forecast model produces varying outputs even with the same input parameters due to non-deterministic elements or undocumented manual adjustments in the process."
+    ],
+    "exampleGood": [
+      "Logistics: A financial statement or regulatory compliance report can be exactly reproduced by rerunning the documented consolidation and calculation process on the source data from that specific, versioned accounting period.",
+      "Scientific Research: A research study provides open access to its anonymized dataset and detailed code/scripts for analysis, allowing independent verification and reproduction of its findings.",
+      "Financial Modeling: A risk assessment model is fully documented, uses version-controlled input data, and all calculation steps are deterministic, ensuring that the same inputs always produce the same outputs."
+    ]
+  },
+  {
+    "id": 51,
+    "damaId": 51,
+    "name": "Reputation",
+    "category": "Data",
+    "definition": "The degree to which data are trusted or highly regarded in terms of their source or content.",
+    "unitOfMeasure": "Grade",
+    "icon": "bi-patch-check-fill", // Changed icon
+    "examplePoor": [
+      "Logistics: Data originating from a known unreliable spreadsheet that is manually updated by many users with no validation is treated with skepticism by managers.",
+      "News: Information from an unverified social media account with a history of spreading misinformation has a poor reputation.",
+      "Market Data: Financial forecasts from an analyst with a poor track record of accuracy are not highly regarded by investors."
+    ],
+    "exampleGood": [
+      "Logistics: Official customs declarations or data from major, audited shipping lines are generally considered reputable sources for cargo details and vessel movements.",
+      "News: Data published by established government statistical agencies (e.g., Bureau of Labor Statistics, Eurostat) or highly respected international organizations (e.g., World Bank, IMF) generally has a strong reputation.",
+      "Market Data: Market analysis reports from well-known, independent research firms with a long history of insightful and accurate reporting are trusted by businesses."
+    ]
+  },
+  {
+    "id": 52,
+    "damaId": 52,
+    "name": "Retention period",
+    "category": "Datasets",
+    "definition": "The period that datasets are available until they can or must be deleted.",
+    "unitOfMeasure": "Duration",
+    "icon": "bi-calendar-x",
+    "examplePoor": [
+      "Logistics: Financial records related to shipping transactions are deleted after only one year, violating legal retention requirements which mandate 7 years.",
+      "Healthcare: Patient medical records are purged too soon, potentially impacting long-term patient care or legal inquiries.",
+      "E-commerce: Customer order history is kept indefinitely without a clear policy, increasing storage costs and potential privacy risks over time."
+    ],
+    "exampleGood": [
+      "Logistics: A clear data retention policy, aligned with legal and business requirements, defines how long different types of data (e.g., operational logs, personnel records, contracts) must be kept and when they should be securely disposed of.",
+      "Healthcare: Electronic Health Records are retained for the patient's lifetime plus a legally mandated period post-mortem, in compliance with regulations.",
+      "E-commerce: A data lifecycle management policy specifies that anonymized customer transaction data is archived after 5 years and fully deleted after 10 years, balancing analytical needs with privacy considerations."
+    ]
+  },
+  {
+    "id": 53,
+    "damaId": 53,
+    "name": "Timeliness",
+    "category": "Dataset availability",
+    "definition": "The degree to which the period between the time of creation of the real value and the time that the dataset is available is appropriate.",
+    "unitOfMeasure": "Duration",
+    "icon": "bi-alarm-fill", // Changed icon
+    "examplePoor": [
+      "Logistics: Customs release status for imported containers is updated in the terminal system only once daily, causing potential truck delays at the gate if the release happened earlier but isn't yet visible.",
+      "Retail: Inventory updates from Point-of-Sale systems take 4 hours to reflect in the online store, leading to customers ordering items that are actually out of stock.",
+      "Emergency Response: Information about a critical incident (e.g., a chemical spill) takes 30 minutes to reach the relevant emergency response teams via the official communication system."
+    ],
+    "exampleGood": [
+      "Logistics: Vessel arrival times are updated in the port community system within minutes of the actual event (e.g., vessel crossing port limits, berthing).",
+      "Retail: Online product availability is updated within 5 minutes of a sale or stock replenishment in the physical store or warehouse.",
+      "Emergency Response: Real-time GPS location of ambulances is available to dispatchers with a delay of less than 10 seconds."
+    ],
+    "damaAppendix3Title": "Timeliness",
+    "synonyms": [],
+    "relatedDamaDimensionIds": [43, 26], // Punctuality, Currency
+    "indicators": ["Percentage of times a dataset was not available in a timely manner."],
+    "notes": [
+        "The date of birth of a person is available in a dataset after 23 days. It should be available within one week.",
+        "Data about quarterly returns of VAT are available 3 months after the end of the quarter. The requirement is 1 month after the end of the quarter.",
+        "Timeliness can only be measured if there is a norm for timeliness, e.g., one week after the event.",
+        "Timeliness is dependent on the duration of a process.",
+        "Data can be available punctually but not timely and the other way around."
+    ]
+  },
+  {
+    "id": 54,
+    "damaId": 54,
+    "name": "Traceability",
+    "category": "Data",
+    "definition": "The degree to which data lineage is available.",
+    "unitOfMeasure": "Story", // Can also be Grade or % coverage
+    "icon": "bi-signpost-split",
+    "examplePoor": [
+      "Logistics: Business users are unsure where the 'estimated time of arrival' (ETA) data for a vessel originated, what transformations it underwent, or if it was manually adjusted.",
+      "Finance: A key figure in a regulatory report cannot be easily traced back to its source transactions or calculation logic, making audits difficult.",
+      "Data Analytics: A machine learning model's predictions cannot be explained because the lineage of the training data (sources, preprocessing steps) is not documented."
+    ],
+    "exampleGood": [
+      "Logistics: Data lineage tools show that the vessel ETA originated from the shipping line's EDI feed, was then updated based on AIS tracking data, and subsequently adjusted by the port agent, with timestamps and user IDs for each change.",
+      "Finance: An auditable data trail exists for all financial reporting, allowing any number to be traced back through aggregation and transformation steps to its source general ledger entries.",
+      "Data Analytics: A data catalog provides complete lineage for all datasets, showing their origin, transformations, dependencies, and usage in models and reports."
+    ],
+    "damaAppendix3Title": "Traceability",
+    "synonyms": [], // DAMA PDF doesn't list, but "Data Lineage" is often used.
+    "relatedDamaDimensionIds": [],
+    "indicators": ["A grade (1-10)"],
+    "notes": ["Data lineage is metadata that identifies the sources of data and the transformations through which it has passed up to the point of consumption."]
+  },
+  {
+    "id": 55,
+    "damaId": 55,
+    "name": "Uniqueness (Objects)",
+    "category": "Objects",
+    "definition": "The degree to which objects (of the real world) occur only once as a record in a data file.",
+    "unitOfMeasure": "%",
+    "icon": "bi-person-badge", // Changed icon
+    "examplePoor": [
+      "Logistics: The same physical container (e.g., MSCU1234567) appears as two different records in the terminal inventory list due to a minor typo in one of the ID entries or being recorded by two different systems without reconciliation.",
+      "Customer Management: The same individual customer exists as three separate records in the CRM because they used different email addresses or had slight name variations when interacting with the company.",
+      "Asset Management: A single piece of equipment (e.g., a specific crane) is listed multiple times in the asset register under different asset tags."
+    ],
+    "exampleGood": [
+      "Logistics: Each distinct physical vessel calling at the port has exactly one corresponding master record in the vessel database, identified by its unique IMO number.",
+      "Customer Management: A robust Master Data Management (MDM) process ensures that each unique customer (individual or organization) is represented by a single 'golden record' in the system.",
+      "Asset Management: Every physical asset owned by the company has one unique record in the asset tracking system, identified by a unique serial number or asset ID."
+    ],
+    "damaAppendix3Title": "Uniqueness", // Note: Appendix 3 Uniqueness covers both object and record uniqueness concepts.
+    "synonyms": [], // Related to Uniqueness of Records
+    "relatedDamaDimensionIds": [56], // Uniqueness (Records)
+    "indicators": ["Percentage of duplicates in a data file."], // Applies more to record uniqueness
+    "notes": [ // Notes from Appendix 3 apply to broader uniqueness
+        "A record that occurs twice in a data file is called a duplicate.",
+        "Uniqueness of object is the degree to which objects (of the real world) occur only once as a record in a dataset.",
+        "Three different problems can occur: a. One record with one key value occurs more than once in a dataset (duplicate with identical key values). The two records are not unique. b. One record with more than one key value occurs more than once in a dataset (duplicate with different key values). Object John is not unique in the dataset. c. One record has the same key as another record, and both occur in a dataset (false duplicate). Key 22 is not unique."
+    ]
+  },
+  {
+    "id": 56,
+    "damaId": 56,
+    "name": "Uniqueness (Records)",
+    "category": "Records",
+    "definition": "The degree to which records occur only once in a data file.",
+    "unitOfMeasure": "%",
+    "icon": "bi-exclude",
+    "examplePoor": [
+      "Logistics: A duplicate Bill of Lading record exists in the shipping documentation system, potentially leading to double-billing or incorrect cargo release.",
+      "Online Orders: The same online order is recorded twice in the order management system due to a user clicking the 'submit' button multiple times or a system glitch.",
+      "Event Ticketing: Two identical seat reservation records are created for the same event and seat, assigned to different customers."
+    ],
+    "exampleGood": [
+      "Logistics: Each gate transaction record (container in/out) has a unique transaction ID within the daily log file.",
+      "Online Orders: The order processing system assigns a unique order number to every successfully submitted order, preventing duplicates.",
+      "Event Ticketing: The ticketing system ensures that each combination of event, seat, and date can only have one active reservation record."
+    ]
+    // Appendix 3 notes for "Uniqueness" are broad and included in ID 55.
+  },
+  {
+    "id": 57,
+    "damaId": 57,
+    "name": "Validity",
+    "category": "Data values",
+    "definition": "The degree to which data values comply with rules.",
+    "unitOfMeasure": "%",
+    "icon": "bi-shield-check",
+    "examplePoor": [
+      "Logistics: A container number in the system is 'ABCD123456X' which doesn't conform to the ISO 6346 standard format (e.g., invalid check digit or owner code).",
+      "Order Entry: An order record contains an invalid date like '31/02/2024' or a 'ProductStatusCode' of 'X' when only 'A', 'I', 'D' are allowed.",
+      "User Registration: A user enters 'N/A' in a required 'PhoneNumber' field that expects a numerical format."
+    ],
+    "exampleGood": [
+      "Logistics: All container numbers stored in the system follow the ISO 6346 standard format, including a valid owner code, serial number, and check digit.",
+      "Order Entry: All 'OrderDate' fields contain valid calendar dates in the YYYY-MM-DD format, and 'CountryCode' fields use valid ISO 3166-1 alpha-2 codes.",
+      "User Registration: Email addresses entered by users are validated against a standard email format pattern (e.g., user@domain.com)."
+    ],
+    "damaAppendix3Title": "Validity",
+    "synonyms": [],
+    "relatedDamaDimensionIds": [3, 14, 20], // Accuracy, Completeness (Data Values), Consistency
+    "indicators": ["Percentage of data values that do not comply with rules."],
+    "notes": [
+        "A city that does not exist in a list of cities.",
+        "A birth data that is out of range of valid birth dates.",
+        "A data value can be valid but not accurate.",
+        "A data value can be valid but incomplete. Absence of certain data values may be permitted.",
+        "A valid data value is part of a value domain.",
+        "Consistency is about comparing two or more data values."
+    ]
+  },
+  {
+    "id": 58,
+    "damaId": 58,
+    "name": "Value",
+    "category": "Data",
+    "definition": "The degree to which data provide advantages from their use.",
+    "unitOfMeasure": "Grade", // Can also be Story or monetary if quantifiable
+    "icon": "bi-currency-dollar",
+    "examplePoor": [
+      "Logistics: Collecting highly detailed equipment sensor data (e.g., vibration readings every second) that is never analyzed, used for predictive maintenance, or contributes to any business decision.",
+      "Marketing: Investing heavily in a complex customer segmentation model whose outputs are too difficult for the sales team to understand or act upon.",
+      "Operations: Generating numerous daily operational reports that are not read or used by anyone to improve processes."
+    ],
+    "exampleGood": [
+      "Logistics: Analyzing historical container throughput data and vessel turnaround times helps optimize resource allocation (labor, equipment), berth planning, and significantly improve terminal efficiency, leading to cost savings.",
+      "Marketing: Using customer purchase history data to personalize product recommendations results in a measurable increase in conversion rates and average order value.",
+      "Operations: Real-time tracking data for delivery vehicles is used to optimize routes, reduce fuel consumption, and improve on-time delivery performance, directly impacting customer satisfaction and operational costs."
+    ]
+  },
+  {
+    "id": 59,
+    "damaId": 59,
+    "name": "Variety",
+    "category": "Data",
+    "definition": "The degree to which data are available from different data sources.",
+    "unitOfMeasure": "Story", // Can also be Number of sources
+    "icon": "bi-diagram-3",
+    "examplePoor": [
+      "Logistics: Relying solely on manual input from operators for recording operational status (e.g., equipment breakdowns), without cross-referencing system logs, sensor data, or maintenance records.",
+      "Market Analysis: Basing market trend predictions only on internal sales data without considering broader economic indicators, competitor activities, or industry reports.",
+      "Customer Insights: Understanding customer sentiment only through direct complaints, without analyzing social media mentions, survey feedback, or product reviews."
+    ],
+    "exampleGood": [
+      "Logistics: Combining data from the Terminal Operating System (TOS), vessel AIS feeds, weather services, gate camera OCR, and customs systems provides a comprehensive and robust operational picture for decision-making.",
+      "Market Analysis: Integrating internal sales data with external market research reports, economic forecasts, social media trends, and news feeds to build a more accurate and holistic market model.",
+      "Customer Insights: Creating a 360-degree customer view by consolidating data from CRM, e-commerce transactions, website analytics, support tickets, social media interactions, and satisfaction surveys."
+    ]
+  },
+  {
+    "id": 60,
+    "damaId": 60,
+    "name": "Volatility",
+    "category": "Data values",
+    "definition": "The degree to which data values change over time.",
+    "unitOfMeasure": "%", // Or frequency of change
+    "icon": "bi-lightning-charge-fill", // Changed icon
+    "examplePoor": [
+      "Logistics: Customer contact information (e.g., primary contact person, phone number for a shipping company) changes frequently, but the update process for the master data is slow and manual, leading to many outdated records.",
+      "Stock Market: Real-time stock prices are highly volatile, changing many times per second, requiring very frequent updates for accurate trading systems.",
+      "Product Catalog: Product prices in a fast-moving consumer goods (FMCG) industry change weekly due to promotions, but the pricing system is only updated monthly."
+    ],
+    "exampleGood": [
+      "Logistics: Reference data like ISO country codes or port UN/LOCODEs are very stable and change extremely infrequently, making them reliable for long-term use.",
+      "Stock Market: Historical end-of-day stock prices are static once the trading day is closed and verified.",
+      "Product Catalog: Core product attributes like 'Material Safety Data Sheet (MSDS) ID' for a chemical product are non-volatile once established."
+    ]
+  }
+]

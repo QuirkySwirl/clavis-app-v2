@@ -1,0 +1,38 @@
+[
+  {
+    "id": "A",
+    "objective": "Satisfaction of customers and other stakeholders"
+  },
+  {
+    "id": "B",
+    "objective": "Quality of the product or service delivered by the organisation"
+  },
+  {
+    "id": "C",
+    "objective": "Public confidence in the organisation"
+  },
+  {
+    "id": "D",
+    "objective": "Reputation of the organisation"
+  },
+  {
+    "id": "E",
+    "objective": "Interoperability between organisations"
+  },
+  {
+    "id": "F",
+    "objective": "The level of data quality management costs relative to the costs of emergency data quality repairs and the risks of fines due to non-compliance"
+  },
+  {
+    "id": "G",
+    "objective": "Efficiency of the processes of all partners in a data processing chain"
+  },
+  {
+    "id": "H",
+    "objective": "Compliance of the organisation with laws, regulations, and requirements of regulators."
+  },
+  {
+    "id": "I",
+    "objective": "Data driven decisions making"
+  }
+]

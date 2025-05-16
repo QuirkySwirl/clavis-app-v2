@@ -1,0 +1,170 @@
+{
+  "charterTemplates": [
+    {
+      "charterType": "LifecyclePainPoint",
+      "titleTemplate": "Draft Initiative Charter: Improving Data Quality for '{StageName}' within the '{LifecycleName}' Process",
+      "sections": [
+        {
+          "heading": "A. Business Case / Opportunity Statement",
+          "id": "business_case",
+          "copyTemplate": [
+            "Current challenges within the **{StageName}** stage of the **{LifecycleName}** lifecycle, notably issues such as **'{PainPoint1}'** {PainPoint2_if_exists?and '{PainPoint2}'}, are leading to significant operational inefficiencies and business impacts such as **{SummarizedNegativeImpactsFromDQDimensions}**. For example, poor {ExampleDimensionNameForPainPoint1} contributes directly to {SpecificExampleImpactForPainPoint1}.",
+            "Addressing the root data quality dimensions – primarily **{DimensionNameList}** – presents a clear opportunity to mitigate these issues. Successfully improving these dimensions is expected to result in tangible benefits like **{SummarizedPositiveImpactsFromDQDimensions}**, reduce operational friction, and enhance stakeholder satisfaction.",
+            "This initiative directly supports the broader strategic objective of **'{RelevantStrategicObjectiveName}'** by strengthening the foundational data integrity of core business processes."
+          ],
+          "guidanceForUser": "Review and quantify the current impacts if possible (e.g., 'estimated cost of rework due to X'). Refine the link to strategic objectives with specific business goals."
+        },
+        {
+          "heading": "B. Problem Statement",
+          "id": "problem_statement",
+          "copyTemplate": [
+            "The core problem this initiative aims to address is suboptimal performance and/or unacceptable risk within the **{StageName}** of the **{LifecycleName}** process, driven by deficiencies in key Data Quality dimensions.",
+            "Diagnostic insights from Clavis indicate that **{DimensionNameList}** are the primary DQ dimensions contributing to the identified pain points.",
+            "{EnvironmentalFactorInsight_if_exists?This situation appears to be exacerbated by underlying environmental factors such as **'{EnvironmentalFactor1_Name}'**, which {BriefDescriptionOfFactor1ImpactOnDQDimensions}.}",
+            "Specifically, issues such as {SpecificExampleOfPoorDQ1} (related to {DimensionName1}) and {SpecificExampleOfPoorDQ2} (related to {DimensionName2}) are manifesting as {ReiterateKeyPainPointSymptoms}."
+          ],
+          "guidanceForUser": "Validate these identified DQ dimensions with your team. Gather specific examples of how these data issues manifest in your daily operations."
+        },
+        {
+          "heading": "C. Goal Statement (SMART Suggestion)",
+          "id": "goal_statement",
+          "copyTemplate": [
+            "The primary goal of this initiative is to **improve the {PrimaryDimensionToImproveName} of {KeyDataTypeInvolved, e.g., 'customer order data'} within the {StageName} process by a target of [Specify % or Measurable Improvement, e.g., '25% reduction in errors'] within [Specify Timeframe, e.g., 'the next 6 months'].**",
+            "Achieving this goal is expected to lead to a measurable reduction in '{KeyPainPointToAlleviate}' and contribute to an improvement in the '{Relevant_KPI_Name}' KPI.",
+            "Secondary goals include enhancing overall data reliability for this process and establishing clearer data handling practices."
+          ],
+          "guidanceForUser": "Refine this goal to be Specific, Measurable, Achievable, Relevant, and Time-bound (SMART) for your context. Define how you will measure the improvement."
+        },
+        {
+          "heading": "D. In-Scope (Key Focus Areas)",
+          "id": "in_scope",
+          "copyTemplate": [
+            "**Process Area:** The '{LifecycleName}' lifecycle, specifically focusing on the '{StageName}' stage and its associated activities.",
+            "**Key Data Quality Dimensions to Address:** {DimensionNameList}.",
+            "**Primary Data Categories / Entities Involved (Examples):** {RelevantDataCategoriesList, e.g., 'Customer Master Data', 'Order Transaction Data', 'Product Reference Data'}.",
+            "**Key Data Elements (Examples):** {SpecificDataElementsList, e.g., 'Customer Address', 'Order Quantity', 'Product SKU', 'Invoice Amount'}.",
+            "**Systems to Review (Initial Consideration):** [User to identify relevant systems, e.g., 'CRM', 'ERP Order Module', 'Billing System']."
+          ],
+          "guidanceForUser": "Identify the specific systems, data sources, and detailed data elements that will be directly part of this improvement effort."
+        },
+        {
+          "heading": "E. Out-of-Scope (Initial Boundaries)",
+          "id": "out_of_scope",
+          "copyTemplate": [
+            "To maintain focus and achievability, the following are initially considered out-of-scope for this specific initiative:",
+            "- Full-scale replacement of core IT systems (unless identified as the *only* viable solution post-analysis).",
+            "- Enterprise-wide Master Data Management (MDM) program implementation (though findings may inform such a program).",
+            "- Data quality improvements for processes or data domains not directly linked to the '{StageName}' of the '{LifecycleName}'.",
+            "- Organizational restructuring."
+          ],
+          "guidanceForUser": "Clearly define boundaries to manage expectations and scope creep. Be specific about what this particular initiative will *not* address."
+        },
+        {
+          "heading": "F. Key Roles & Responsibilities (Suggested)",
+          "id": "roles_responsibilities",
+          "copyTemplate": [
+            "**Project Sponsor:** [To be identified - e.g., Manager/Director of {DepartmentOwningProcess}] - Champions the initiative, secures resources, removes roadblocks.",
+            "**Business Process Owner(s):** [To be identified - e.g., Lead from {DepartmentOwningProcess}] - Provides deep process knowledge, defines requirements, validates improvements.",
+            "**Data Steward(s) / Owner(s):** [To be identified, or 'To Be Assigned'] - Accountable for the definition, quality, and authorized use of specific data elements within scope.",
+            "**IT / Technical Representative(s):** [To be identified] - Assists with data analysis, system access, potential technical changes, or tool implementation if needed.",
+            "**Project Lead / DQ Champion:** [User of Clavis or assigned individual] - Manages the improvement effort, tracks progress, facilitates communication."
+          ],
+          "guidanceForUser": "Identify specific individuals for these roles. Ensure they have the capacity and authority to contribute effectively."
+        },
+        {
+          "heading": "G. Preliminary Success Metrics",
+          "id": "success_metrics",
+          "copyTemplate": [
+            "- Target reduction in '{KeyPainPointToAlleviate}' by [Specify Target, e.g., '30%'].",
+            "- Improvement in the '{Relevant_KPI_Name}' KPI from [Current Value/Baseline] to [Target Value].",
+            "- Measurable improvement in key data quality dimensions, e.g.:",
+            "  - Increase in {PrimaryDimensionToImproveName} of {KeyDataTypeInvolved} to [Target % or Score].",
+            "  - Reduction in data errors related to {DimensionName2} by [Target %].",
+            "- Positive feedback from users of the '{StageName}' process regarding data reliability."
+          ],
+          "guidanceForUser": "Establish clear, measurable metrics to track the success of this initiative. Define baselines before starting."
+        },
+        {
+          "heading": "H. Next Steps & Call to Action",
+          "id": "next_steps",
+          "copyTemplate": [
+            "1. **Validate & Refine Charter:** Review this draft charter with key stakeholders. Gather input and finalize the scope, goals, and roles.",
+            "2. **Form Project Team:** Formally assign individuals to the identified roles.",
+            "3. **Detailed Root Cause Analysis:** Conduct a deeper investigation into *why* the identified data quality dimensions are poor within the scoped process (e.g., process gaps, system limitations, lack of training, unclear standards).",
+            "4. **Develop Action Plan:** Create a detailed project plan with specific tasks, timelines, responsibilities, and required resources to address the root causes and implement improvements.",
+            "5. **Secure Sponsorship & Resources:** Present the finalized charter and action plan to leadership to secure necessary approvals and resources.",
+            "6. **Implement & Monitor:** Execute the action plan and continuously monitor data quality metrics to track progress against goals."
+          ],
+          "guidanceForUser": "This charter is your starting point. Use it to build momentum and a structured approach for your data quality improvement journey."
+        }
+      ]
+    },
+    {
+      "charterType": "KPIImprovement",
+      "titleTemplate": "Draft Initiative Charter: Enhancing Data Quality for the '{KPI_Name}' KPI",
+      "sections": [
+        {
+          "heading": "A. Business Case / Opportunity Statement",
+          "id": "business_case",
+          "copyTemplate": [
+            "The reliability and accuracy of the **'{KPI_Name}'** Key Performance Indicator are currently compromised due to underlying data quality deficiencies. This limits our ability to accurately measure performance related to '{KPI_Objective_or_Area}' and make confident, data-driven decisions.",
+            "Clavis has identified that data quality dimensions such as **{DimensionNameList}** are critical for this KPI. Addressing these issues presents an opportunity to significantly improve the trustworthiness of '{KPI_Name}', leading to **{SummarizedPositiveImpactsFromDQDimensions_KPI_Context}**.",
+            "A reliable '{KPI_Name}' is essential for achieving our strategic objective of **'{RelevantStrategicObjectiveName}'**."
+          ],
+          "guidanceForUser": "Quantify the current impact of an unreliable KPI if possible (e.g., 'cost of decisions based on flawed KPI data')."
+        },
+        {
+          "heading": "B. Problem Statement",
+          "id": "problem_statement",
+          "copyTemplate": [
+            "The core problem is the reduced reliability and trustworthiness of the '{KPI_Name}' KPI, stemming from poor **{DimensionNameList}** in the underlying data sources: {DataSourceListForKPI}.",
+            "{EnvironmentalFactorInsight_if_exists?This is potentially compounded by broader environmental factors like **'{EnvironmentalFactor1_Name}'**.}",
+            "Specific manifestations include {ExampleImpactOfPoorDQonKPI}."
+          ],
+          "guidanceForUser": "Gather specific examples of how poor data quality in the listed dimensions affects the calculation or interpretation of this KPI."
+        },
+        // ... (Goal Statement, In-Scope, Out-Scope, Roles, Success Metrics, Next Steps - tailored for KPI context) ...
+        // Example for Goal Statement in KPI context:
+        {
+          "heading": "C. Goal Statement (SMART Suggestion)",
+          "id": "goal_statement",
+          "copyTemplate": [
+            "The primary goal is to **improve the data quality dimensions ({DimensionNameList}) underpinning the '{KPI_Name}' KPI, such that its reported value achieves a [Specify Target, e.g., 'confidence level of 95%' or 'variance of less than X% from audited figures'] within [Specify Timeframe, e.g., 'the next quarter'].**",
+            "This will enable more reliable performance tracking and decision-making related to '{KPI_Objective_or_Area}'."
+          ],
+           "guidanceForUser": "Define how you will measure both the improvement in the underlying DQ dimensions and the resulting improvement in the KPI's reliability."
+        }
+        // Other sections would follow, similar structure to LifecyclePainPoint but focused on KPI context
+      ]
+    },
+    {
+      "charterType": "StrategicOrAIInitiative",
+      "titleTemplate": "Draft Initiative Charter: Improving Data Quality for Strategic Initiative '{StrategicInitiativeName}'",
+      "sections": [
+        {
+          "heading": "A. Business Case / Opportunity Statement",
+          "id": "business_case",
+          "copyTemplate": [
+            "The successful execution of our strategic initiative, **'{StrategicInitiativeName}'** {AIUseCaseContext_if_exists?(specifically our AI use case: '{AIUseCaseName}')}, is critically dependent on high-quality data. Current assessments, guided by Clavis, indicate potential risks to this initiative due to deficiencies in key data quality dimensions.",
+            "Proactively addressing data quality dimensions such as **{DimensionNameList}** is essential to de-risk this initiative, ensure its effectiveness, and maximize its potential to deliver on objectives like **{SummarizedPositiveImpactsFromDQDimensions_StrategicContext}**.",
+            "Failure to improve these foundational DQ aspects could lead to {SummarizedNegativeImpactsFromDQDimensions_StrategicContext}, potentially jeopardizing the initiative's success."
+          ],
+          "guidanceForUser": "Clearly articulate how this DQ initiative is a critical enabler for the success of the larger strategic program."
+        },
+        // ... (Problem Statement, Goal Statement, In-Scope, etc., tailored for Strategic/AI context) ...
+        // Example for Problem Statement in AI context:
+        {
+          "heading": "B. Problem Statement",
+          "id": "problem_statement",
+          "copyTemplate": [
+            "The key data quality challenges that pose a risk to the '{StrategicInitiativeName}' {AIUseCaseContext_if_exists?and the '{AIUseCaseName}' AI model} are primarily related to **{DimensionNameList}** in the required input datasets ({ExampleInputDatasets}).",
+            "{EnvironmentalFactorInsight_if_exists?Factors such as **'{EnvironmentalFactor1_Name}'** may be contributing to these data deficiencies.}",
+            "For instance, poor {DimensionName1} could lead to {SpecificRiskToAIModelOrStrategy}, while inadequate {DimensionName2} might result in {AnotherSpecificRiskToAIModelOrStrategy}."
+          ],
+           "guidanceForUser": "Detail how specific data quality issues directly threaten the desired outcomes of your strategic or AI initiative. Consult with data scientists or project leads."
+        }
+        // Other sections would follow
+      ]
+    }
+  ]
+}

@@ -1,0 +1,266 @@
+[
+  {
+    "concept": "Attribute",
+    "definition": "A characteristic of an entity type about which the organisation wishes to hold information.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": "Distinguishes entity type. Is specified by its name, definition, classification and format.",
+    "type": "dataWorld",
+    "pdfPage": 28
+  },
+  {
+    "concept": "Characteristic",
+    "definition": "Distinguishing feature.",
+    "source": "ISO 9000",
+    "relationshipsWithOtherConcepts": null,
+    "type": "general",
+    "pdfPage": 28
+  },
+  {
+    "concept": "Composition of a dataset",
+    "definition": "The way in which a dataset is made up.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": null,
+    "type": "dataWorld",
+    "pdfPage": 28
+  },
+  {
+    "concept": "Concept",
+    "definition": "Unit of knowledge created by a unique combination of characteristics.",
+    "source": "ISO 1087",
+    "relationshipsWithOtherConcepts": null,
+    "type": "general",
+    "pdfPage": 28
+  },
+  {
+    "concept": "Concept system",
+    "definition": "A set of concepts structured according to the relations among them.",
+    "source": "ISO 704",
+    "relationshipsWithOtherConcepts": null,
+    "type": "general",
+    "pdfPage": 28
+  },
+  {
+    "concept": "Data",
+    "definition": "A representation of facts, concepts, or instructions in a formalized manner, suitable for communication, interpretation, or processing by humans or by automatic means. (ISO 2382-4).",
+    "source": "In: ISO 11179",
+    "relationshipsWithOtherConcepts": null,
+    "type": "general",
+    "pdfPage": 28
+  },
+  {
+    "concept": "Data category",
+    "definition": "A classification of data according to the purpose for which it is used.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": null,
+    "type": "general",
+    "pdfPage": 28
+  },
+  {
+    "concept": "Data concept",
+    "definition": "A form by which data is structured and organised in an information system.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": "Has associated dimensions",
+    "type": "dataWorld",
+    "pdfPage": 28
+  },
+  {
+    "concept": "Data file",
+    "definition": "Data stored on a computer as one unit with one name.",
+    "source": "Cambridge 2020",
+    "relationshipsWithOtherConcepts": "Is part of a dataset.",
+    "type": "dataWorld",
+    "pdfPage": 28
+  },
+  {
+    "concept": "Data item",
+    "definition": "One occurrence of an attribute.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": "Contains data value.",
+    "type": "dataWorld",
+    "pdfPage": 28
+  },
+  {
+    "concept": "Data lineage",
+    "definition": "Metadata that identifies the sources of data and the transformations through which is has passed up to the point of consumption.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": null,
+    "type": "dataWorld",
+    "pdfPage": 28
+  },
+  {
+    "concept": "Data pattern",
+    "definition": "A series of data that repeats in a recognizable way.",
+    "source": "Investopedia",
+    "relationshipsWithOtherConcepts": null,
+    "type": "dataWorld",
+    "pdfPage": 28
+  },
+  {
+    "concept": "Data quality",
+    "definition": "Data quality is the degree to which dimensions of data meet requirements.",
+    "source": "Adapted from ISO 9001",
+    "relationshipsWithOtherConcepts": null,
+    "type": "general",
+    "pdfPage": 29
+  },
+  {
+    "concept": "Data value",
+    "definition": "The value of a data item.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": "Is contained in data item. Forms part of record. Is within value domain. Represents a property of an object.",
+    "type": "dataWorld",
+    "pdfPage": 29
+  },
+  {
+    "concept": "Dataset",
+    "definition": "Any organized collection of data.",
+    "source": "Early 2011",
+    "relationshipsWithOtherConcepts": "Is composed of data files.",
+    "type": "dataWorld",
+    "pdfPage": 29
+  },
+  {
+    "concept": "Dataset availability",
+    "definition": "The degree to which a dataset can be consulted or retrieved by data consumers or processes.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": "Is a characteristic of a dataset.",
+    "type": "dataWorld",
+    "pdfPage": 29
+  },
+  {
+    "concept": "Dataset composition", // Re-listed to match PDF source, same as "Composition of a dataset"
+    "definition": "The way in which a dataset is made up.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": null,
+    "type": "dataWorld",
+    "pdfPage": 29
+  },
+  {
+    "concept": "Definition",
+    "definition": "Representation of a concept by an expression that describes it and differentiates it from related concepts.",
+    "source": "ISO 1087",
+    "relationshipsWithOtherConcepts": null,
+    "type": "general",
+    "pdfPage": 29
+  },
+  {
+    "concept": "Dimension",
+    "definition": "Measurable characteristic.",
+    "source": "DAMA 2017",
+    "relationshipsWithOtherConcepts": "Is associated with a data concept.",
+    "type": "general",
+    "pdfPage": 29
+  },
+  {
+    "concept": "Entity type",
+    "definition": "A thing of significance about which the organisation wishes to hold information.",
+    "source": "Hay 2013",
+    "relationshipsWithOtherConcepts": "Is distinguished by attributes. Describes object.",
+    "type": "realWorld",
+    "pdfPage": 29
+  },
+  {
+    "concept": "Format",
+    "definition": "A combination of datatype, unit of measure and character set.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": "Is part of the specification of an attribute.",
+    "type": "dataWorld",
+    "pdfPage": 29
+  },
+  {
+    "concept": "Initial data value",
+    "definition": "A provisional data value that will be updated by a more accurate value.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": "Is a specification of a data value.",
+    "type": "dataWorld",
+    "pdfPage": 29
+  },
+  {
+    "concept": "Master Data",
+    "definition": "Data held by an organization which describe object types that it needs to reference in order to perform its transactions.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": "Is an instance of data category.",
+    "type": "dataWorld",
+    "pdfPage": 29
+  },
+  {
+    "concept": "Metadata",
+    "definition": "Data that defines and describes other data.",
+    "source": "ISO 11179",
+    "relationshipsWithOtherConcepts": null,
+    "type": "dataWorld",
+    "pdfPage": 29
+  },
+  {
+    "concept": "Object",
+    "definition": "Anything perceivable or conceivable.",
+    "source": "ISO 9000",
+    "relationshipsWithOtherConcepts": "Is described by entity type. Is characterised by properties. Is represented by records.",
+    "type": "realWorld",
+    "pdfPage": 29
+  },
+  {
+    "concept": "Property",
+    "definition": "A feature of an object.",
+    "source": "ISO 1087",
+    "relationshipsWithOtherConcepts": "Characterises object. Is recorded by data value. Actually, has real value.",
+    "type": "realWorld",
+    "pdfPage": 30
+  },
+  {
+    "concept": "Real value",
+    "definition": "The real-life value of a property of an object.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": "Expresses an instance of a property.",
+    "type": "realWorld",
+    "pdfPage": 30
+  },
+  {
+    "concept": "Record",
+    "definition": "A logically related set of data values that represent a (real-world) object.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": "Forms part of data file. Is composed of data values.",
+    "type": "dataWorld",
+    "pdfPage": 30
+  },
+  {
+    "concept": "Reference data",
+    "definition": "Data used to categorize other data.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": "Is an instance of data category.",
+    "type": "dataWorld",
+    "pdfPage": 30
+  },
+  {
+    "concept": "Register",
+    "definition": "A dataset designated by the government in which vital data about citizens, residents, companies, institutions, vehicles, topography, buildings, and addresses can be centrally maintained.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": "Is an instance of data category.",
+    "type": "dataWorld",
+    "pdfPage": 30
+  },
+  {
+    "concept": "Statistical output",
+    "definition": "Output from a statistical process.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": "Is an instance of data category.",
+    "type": "dataWorld",
+    "pdfPage": 30
+  },
+  {
+    "concept": "Transactional data",
+    "definition": "Data that describes an event that takes place as an organization conducts its business.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": "Is an instance of data category.",
+    "type": "dataWorld",
+    "pdfPage": 30
+  },
+  {
+    "concept": "Value domain",
+    "definition": "A set of permissible values of an attribute.",
+    "source": "-",
+    "relationshipsWithOtherConcepts": "Includes data value.",
+    "type": "dataWorld",
+    "pdfPage": 30
+  }
+]

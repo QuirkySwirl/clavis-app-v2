@@ -1,0 +1,100 @@
+[
+  {
+    "aiFactorId": "AI_RF_001",
+    "aiUseCaseOrRequirement": "Training Robust & Accurate Predictive Models (General)",
+    "description": "Developing AI/ML models that can accurately predict future outcomes, classify data, or identify patterns based on historical and current data.",
+    "criticalDimensionDamaIds": [3, 5, 8, 11, 12, 13, 14, 15, 16, 20, 21, 22, 23, 24, 26, 30, 33, 34, 38, 41, 42, 48, 49, 50, 53, 54, 55, 56, 57, 59, 60], // Accuracy, Availability, Coherence, Completeness (all types), Consistency (all types), Currency, Integrity, Linkability, Metadata Compliance, Plausibility, Precision (1&2), Relevance, Reliability, Reproducibility, Timeliness, Traceability, Uniqueness (Objects, Records), Validity, Variety, Volatility
+    "impactOfPoorDQ": "Models trained on inaccurate, incomplete, or inconsistent data will produce unreliable predictions ('Garbage In, Garbage Out'). Biased data can lead to biased and unfair models. Poor metadata hinders understanding and feature engineering. Lack of traceability makes debugging and explaining models difficult. Irrelevant or noisy data can degrade model performance.",
+    "questionsForCxO": [
+      "How confident are we in the accuracy and completeness of the data used to train our flagship AI models?",
+      "What processes are in place to ensure our training data is relevant and free from significant bias?",
+      "Can we trace the lineage of data feeding our AI systems to understand its provenance and transformations?",
+      "Are we measuring and managing the quality of data specifically for our AI initiatives, beyond general operational DQ?"
+    ]
+  },
+  {
+    "aiFactorId": "AI_RF_002",
+    "aiUseCaseOrRequirement": "Personalized Customer Experiences & Recommendation Engines",
+    "description": "Using AI to understand individual customer preferences and behavior to provide tailored product recommendations, content, or service offerings.",
+    "criticalDimensionDamaIds": [3, 12, 14, 15, 20, 26, 33, 48, 53, 54, 55, 57, 58, 59], // Accuracy, Completeness (Records, Values, Attr Values), Consistency, Currency, Linkability, Relevance, Timeliness, Traceability, Uniqueness (Objects), Validity, Value, Variety
+    "impactOfPoorDQ": "Inaccurate or incomplete customer profiles lead to irrelevant or annoying recommendations, damaging customer experience. Non-current data makes recommendations outdated. Poor linkability prevents a 360-view of the customer. Lack of uniqueness can lead to fragmented or conflicting personalization efforts.",
+    "questionsForCxO": [
+      "Is our customer data accurate, complete, and current enough to truly personalize their experience effectively?",
+      "Are we able to link all relevant customer interaction data to create a unified profile for AI-driven personalization?",
+      "How do we measure the impact of data quality on the effectiveness of our recommendation engines?"
+    ]
+  },
+  {
+    "aiFactorId": "AI_RF_003",
+    "aiUseCaseOrRequirement": "Predictive Maintenance & Anomaly Detection (IoT/Industrial AI)",
+    "description": "Using sensor data (IoT), operational logs, and historical maintenance records to predict equipment failures or detect anomalous operational behavior before significant issues occur.",
+    "criticalDimensionDamaIds": [3, 5, 12, 14, 20, 21, 26, 30, 32, 38, 41, 42, 49, 53, 57, 60], // Accuracy (sensor data), Availability, Completeness (records of maintenance, sensor readings), Consistency (data over time), Currency (real-time data), Integrity, Latency, Plausibility, Precision (1&2), Reliability (sensor data), Timeliness (data availability), Validity (data formats), Volatility
+    "impactOfPoorDQ": "Inaccurate or unreliable sensor data leads to false positives (unnecessary maintenance) or false negatives (missed failure detections, causing costly downtime). Incomplete historical data hinders model training. High latency or non-current data makes predictions useless for timely intervention. Invalid data formats can break data pipelines.",
+    "questionsForCxO": [
+      "Are our sensor data streams sufficiently accurate, reliable, and timely for effective predictive maintenance models?",
+      "Do we have complete and consistent historical maintenance and operational logs to train these models effectively?",
+      "What is the financial impact of a missed failure prediction versus a false positive, and how does data quality influence this?"
+    ]
+  },
+  {
+    "aiFactorId": "AI_RF_004",
+    "aiUseCaseOrRequirement": "Fraud Detection & Risk Management (Financial Services, E-commerce)",
+    "description": "Employing AI to identify potentially fraudulent transactions, assess credit risk, or detect anomalous patterns indicative of security threats.",
+    "criticalDimensionDamaIds": [3, 12, 14, 17, 19, 20, 21, 26, 33, 38, 48, 53, 54, 55, 56, 57], // Accuracy, Completeness (Records, Values), Compliance (Data), Confidentiality, Consistency (general, temporal), Currency, Linkability, Plausibility, Relevance, Timeliness, Traceability, Uniqueness (Objects, Records), Validity
+    "impactOfPoorDQ": "High rates of false positives in fraud detection can inconvenience legitimate customers and increase operational overhead. False negatives mean actual fraud is missed, leading to financial loss. Inaccurate or incomplete data can lead to unfair risk assessments. Lack of traceability hinders investigation of detected fraud.",
+    "questionsForCxO": [
+      "How does the quality of our transactional and customer data affect the accuracy of our fraud detection and risk models?",
+      "What measures are in place to minimize false positives while effectively catching fraudulent activities?",
+      "Can we trace and audit the data used in risk assessment decisions for regulatory compliance?"
+    ]
+  },
+  {
+    "aiFactorId": "AI_RF_005",
+    "aiUseCaseOrRequirement": "Natural Language Processing (NLP) & Chatbots/Virtual Assistants",
+    "description": "Using AI to understand, interpret, and generate human language for applications like customer service chatbots, sentiment analysis, or document summarization.",
+    "criticalDimensionDamaIds": [3, 4, 12, 14, 16, 20, 31, 48, 57, 59], // Accuracy (of text data), Appropriateness (format for NLP), Completeness (text records, contextual data), Consistency (in language use), Interpretability (clear language), Relevance (of training text), Validity (of text structure), Variety (of language examples)
+    "impactOfPoorDQ": "Chatbots trained on inaccurate, ambiguous, or irrelevant text data will misunderstand user queries and provide poor responses. Inconsistent language use in training data can confuse models. Poorly formatted text can be difficult for NLP algorithms to process. Lack of variety may limit understanding of diverse user inputs.",
+    "questionsForCxO": [
+      "Is the textual data we use to train our NLP models accurate, clearly interpretable, and representative of real-world language use?",
+      "How are we ensuring that our chatbots and virtual assistants are not learning from or perpetuating biased or inappropriate language?",
+      "What is the quality of the knowledge bases our AI assistants rely on to answer questions?"
+    ]
+  },
+  {
+    "aiFactorId": "AI_RF_006",
+    "aiUseCaseOrRequirement": "Computer Vision & Image/Video Analysis",
+    "description": "Applying AI to analyze and interpret visual information from images or videos for tasks like object detection, facial recognition, or quality control in manufacturing.",
+    "criticalDimensionDamaIds": [3, 12, 14, 16, 38, 41, 48, 57, 59], // Accuracy (of labels, image quality), Completeness (of image datasets, annotations), Metadata (Completeness for context), Plausibility (of objects/scenes), Precision (in annotations/measurements), Relevance (of images to the task), Validity (image formats), Variety (of visual examples)
+    "impactOfPoorDQ": "Inaccurately labeled images will lead to models that misidentify objects. Incomplete or non-representative image datasets can result in biased or poorly performing models. Low-quality or irrelevant images will degrade model accuracy. Poor metadata makes datasets hard to use.",
+    "questionsForCxO": [
+      "How accurate and consistent are the annotations and labels for our image and video datasets used in AI training?",
+      "Are our visual datasets diverse and representative enough to avoid bias and ensure robust model performance in real-world scenarios?",
+      "What are the processes for ensuring the relevance and quality of images/videos fed into our computer vision systems?"
+    ]
+  },
+  {
+    "aiFactorId": "AI_RF_007",
+    "aiUseCaseOrRequirement": "Ensuring AI Fairness, Ethics, & Bias Mitigation",
+    "description": "Developing and deploying AI systems that are fair, equitable, transparent, and do not perpetuate or amplify harmful biases present in data or algorithms.",
+    "criticalDimensionDamaIds": [3, 11, 12, 14, 15, 16, 20, 21, 22, 34, 48, 54, 55, 59], // Accuracy, Completeness (Attributes, Records, Values, Attribute Values), Metadata (Completeness), Consistency (various), Metadata Compliance, Relevance, Traceability, Uniqueness (Objects - for representativeness), Variety
+    "impactOfPoorDQ": "Biased AI decisions leading to unfair outcomes for individuals or groups, significant reputational damage, loss of public trust, and regulatory scrutiny. Incomplete or skewed representation of demographics in training data is a primary cause of bias. Lack of traceability hinders bias investigation and remediation.",
+    "questionsForCxO": [
+      "What methodologies are we employing to detect and mitigate bias in our data before it's used for AI model training?",
+      "Are our datasets sufficiently diverse and representative of all relevant population segments to ensure fair AI outcomes?",
+      "How transparent and traceable is the data pipeline for our AI systems to support ethical reviews and bias audits?",
+      "Do we have clear governance and oversight for the ethical implications of our AI deployments, starting with data quality?"
+    ]
+  },
+  {
+    "aiFactorId": "AI_RF_008",
+    "aiUseCaseOrRequirement": "AI in Regulated Industries (e.g., Healthcare, Finance)",
+    "description": "Developing and deploying AI applications that must adhere to strict regulatory requirements regarding data handling, model validation, auditability, and decision-making.",
+    "criticalDimensionDamaIds": [1, 3, 5, 11, 12, 13, 14, 16, 17, 18, 19, 20, 34, 45, 47, 50, 52, 53, 54, 57], // Access Security, Accuracy, Availability, Completeness (all that are auditable), Metadata (Completeness), Compliance (Data, Composition), Confidentiality, Consistency, Metadata Compliance, Recoverability, Referential Integrity, Reproducibility, Retention Period, Timeliness, Traceability, Validity
+    "impactOfPoorDQ": "Failure to meet regulatory standards can result in severe penalties, legal action, and loss of license to operate. Inaccurate or incomplete data can lead to non-compliant AI decisions. Lack of traceability and reproducibility makes audits impossible. Poor data security can lead to breaches of regulated data.",
+    "questionsForCxO": [
+      "How are we ensuring that the data used by our AI systems in regulated areas meets all specific compliance requirements (e.g., accuracy thresholds, audit trails)?",
+      "Are our AI models and their underlying data fully auditable and their decisions reproducible to satisfy regulatory bodies?",
+      "What data governance framework is in place to manage data quality for AI in compliance with industry-specific regulations?"
+    ]
+  }
+]

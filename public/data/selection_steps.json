@@ -1,0 +1,28 @@
+{
+  "title": "How to select the right dimensions of data quality?",
+  "introduction": "This chapter describes how dimensions of data quality can be selected. These actions are the first steps in a procedure to control or improve data quality.",
+  "steps": [
+    {
+      "stepNumber": 1,
+      "name": "Determine which dimensions of data quality are important for the data under consideration",
+      "description": "Determine the category of the data. Examples of data categories are master data, reference data, transactional data, basic registers, and statistical output. Determine which dimensions are important for the data category. Table 4 in Appendix 2 indicates which dimensions are candidates for a specific data category."
+    },
+    {
+      "stepNumber": 2,
+      "name": "Determine whether a dimension contributes sufficiently to a higher objective",
+      "description": "Determine whether a dimension contributes sufficiently to a higher objective, i.e. to some business goal. The contribution must be large enough to make it worthwhile to select the dimension. See Appendix 1 for 60 dimensions of data quality and their definitions."
+    },
+    {
+      "stepNumber": 3,
+      "name": "Prioritize the dimensions",
+      "description": "Rank the dimensions in order of priority. Put the dimension with the best cost-benefit ratio on the first place, thereby keeping control over your costs."
+    },
+    {
+      "stepNumber": 4,
+      "name": "Establish indicators and associated measurement methods for the selected dimensions",
+      "description": "Establish indicators for the selected dimensions. Appendix 3 shows possible indicators for some common dimensions. Establish a measurement method for each indicator."
+    }
+  ],
+  "stakeholder_involvement_note": "The persons who have interests in the data should be involved in the selection process. Namely those who are responsible, accountable, consulted, and informed (RACI) about data quality according to their roles.",
+  "source_document_page": 10
+}

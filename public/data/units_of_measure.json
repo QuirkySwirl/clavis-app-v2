@@ -1,0 +1,37 @@
+[
+  {
+    "unit": "%",
+    "description": "Percentage",
+    "remark": "Percentage"
+  },
+  {
+    "unit": "Number",
+    "description": "Absolute number",
+    "remark": "Absolute number"
+  },
+  {
+    "unit": "Grade",
+    "description": "A subjective rating, often on a scale.",
+    "remark": "Only the perception of people about the dimension can be measured. A grade can be number on a scale of 0-10 or 1-5."
+  },
+  {
+    "unit": "Boolean",
+    "description": "A binary true/false or yes/no value.",
+    "remark": "Yes/no or true/false"
+  },
+  {
+    "unit": "Duration",
+    "description": "A length of time.",
+    "remark": "Expressed in seconds, minutes, hours, days, weeks or months."
+  },
+  {
+    "unit": "Story",
+    "description": "A qualitative or narrative assessment.",
+    "remark": "The value of the dimension cannot be expressed in a number and should be explained in a 'story'."
+  },
+  {
+    "unit": "Depends on data or metadata",
+    "description": "The unit is context-specific to the data or metadata being measured.",
+    "remark": "The unit of measure depends on the specific data or metadata being assessed (e.g., for Precision (1))."
+  }
+]

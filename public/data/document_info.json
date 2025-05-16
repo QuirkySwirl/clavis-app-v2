@@ -1,0 +1,37 @@
+{
+  "title": "How to Select the Right Dimensions of Data Quality",
+  "subtitle": "Includes 60 dimensions of data quality and their standardized definitions",
+  "publisher": "DAMA NL",
+  "publication_initiative": "Data Quality working group of DAMA-NL",
+  "authors": [
+    {
+      "name": "Andrew Black",
+      "affiliation": "Van Nederpelt & Black"
+    },
+    {
+      "name": "Peter van Nederpelt",
+      "affiliation": "Van Nederpelt & Black"
+    }
+  ],
+  "reviewers": [
+    {
+      "name": "Fred Dijk",
+      "affiliation": "Scamander"
+    },
+    {
+      "name": "Aris Prins",
+      "affiliation": "Premium"
+    }
+  ],
+  "version_info": {
+    "version_reference": "See Version History in PDF (Latest printed 1.1 as of 14 Nov 2020)",
+    "printed_date_on_cover_page_example": "15-11-2020 14:41",
+    "first_published_sept_2020": true,
+    "derivation_source": "Derived from research paper 'Dimensions of Data Quality (Black, Van Nederpelt, 2020)'"
+  },
+  "copyright": "© DAMA NL Foundation. All rights reserved.",
+  "contact_proposals": ["info@dama-nl.org", "info@vannederpeltblack.nl"],
+  "audience": "Everyone who is involved in management of data quality, particularly those preparing to apply data quality dimensions in practice.",
+  "purpose_of_document": "To present an approach to selecting the dimensions of data quality that best apply to a specific situation. This is the first step to control or improve data quality. It offers a list of 60 dimensions of data quality and corresponding, standardized definitions.",
+  "importance_of_data_quality_summary": "Data plays an increasingly important useful role in society. Dependence on data for many activities and processes is increasing. Quality of data is therefore of growing importance and should be managed. Bad quality data puts an organisation at risk. It can lead to bad decisions, unsatisfied customers, unsatisfied data consumers, fines due to non-compliance, hidden costs (rework), bad reputation, unsatisfied employees, and lack of interoperability."
+}
