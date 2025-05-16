@@ -1,3 +1,5 @@
+/// <reference types="node" />
+
 import type { Config } from "tailwindcss";
 import defaultTheme from "tailwindcss/defaultTheme"; // Corrected import
 
@@ -102,7 +104,10 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")], // For shadcn/ui animations
+  plugins: [
+    require("tailwindcss-animate"), // For shadcn/ui animations
+    require("@tailwindcss/typography"), // For prose styling
+  ],
 } satisfies Config;
 
 export default config;
