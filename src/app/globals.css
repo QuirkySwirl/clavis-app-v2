@@ -1,0 +1,158 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+/* Clavis Style Guide CSS Variables & Global Styles */
+@layer base {
+  :root {
+    /* Base Colors (from STYLE_GUIDE.md & tailwind.config.ts) */
+    --clavis-bg-deep-dark: #0A0A12;
+    --clavis-bg-panel-dark: #161624;
+    --clavis-text-primary: #EAEAF2;
+    --clavis-text-secondary: #A0A0B5;
+    --clavis-text-tertiary: #70708A;
+
+    /* Accent Colors (from STYLE_GUIDE.md & tailwind.config.ts) */
+    --clavis-accent-1: #F9C52C; /* Yellow/Gold */
+    --clavis-accent-2: #FC6F3A; /* Vibrant Orange */
+    --clavis-accent-3: #FA3F6A; /* Deep Pink/Magenta */
+    --clavis-accent-4: #D42CCA; /* Purpleish Pink */
+    --clavis-accent-blue-light: #8ECAE6;
+    --clavis-accent-blue-deep: #219EBC;
+    --clavis-accent-pink-soft: #FFB6C1;
+    --clavis-accent-pink-vivid: #FF69B4;
+
+    /* Glassmorphism (from STYLE_GUIDE.md) */
+    --clavis-glass-bg: rgba(30, 30, 50, 0.55);
+    --clavis-glass-border: rgba(255, 255, 255, 0.1);
+    --clavis-glass-shadow: rgba(0, 0, 0, 0.3); /* Added for potential use */
+
+    /* shadcn/ui Theme Colors (Dark Theme - from STYLE_GUIDE.md) */
+    --background: 10 10 18; /* #0A0A12 hsl(240, 20%, 5.5%) approx for --clavis-bg-deep-dark */
+    --foreground: 240 4% 92%; /* #EAEAF2 hsl(240, 4%, 92%) for --clavis-text-primary */
+    
+    --card: 240 17% 11%; /* #161624 hsl(240, 17%, 11.4%) for --clavis-bg-panel-dark */
+    --card-foreground: 240 4% 92%; /* --clavis-text-primary */
+
+    --popover: 240 17% 11%; /* --clavis-bg-panel-dark */
+    --popover-foreground: 240 4% 92%; /* --clavis-text-primary */
+
+    --primary: 16 97% 61%; /* #FC6F3A hsl(16, 97%, 61.2%) for --clavis-accent-2 (Orange) */
+    --primary-foreground: 0 0% 100%; /* #FFFFFF */
+
+    --secondary: 195 70% 41%; /* #219EBC hsl(195, 70%, 41%) for --clavis-accent-blue-deep */
+    --secondary-foreground: 240 4% 92%; /* --clavis-text-primary */
+
+    --muted: 240 8% 53%; /* #70708A hsl(240, 8%, 52.9%) for --clavis-text-tertiary */
+    --muted-foreground: 240 9% 67%; /* #A0A0B5 hsl(240, 9.1%, 67.3%) for --clavis-text-secondary */
+
+    --accent: 45 95% 57%; /* #F9C52C hsl(45, 95%, 57.1%) for --clavis-accent-1 (Yellow/Gold) */
+    --accent-foreground: 240 17% 11%; /* --clavis-bg-panel-dark for contrast */
+    
+    --destructive: 345 95% 61%; /* #FA3F6A hsl(345, 95%, 61.4%) for --clavis-accent-3 (Deep Pink) */
+    --destructive-foreground: 240 4% 92%; /* --clavis-text-primary */
+
+    --border: 0 0% 100% / 0.1; /* rgba(255, 255, 255, 0.1) - matches glass border */
+    --input: 0 0% 100% / 0.1; /* For input backgrounds if styled similarly */
+    --ring: 202 70% 73%; /* #8ECAE6 hsl(202, 70.2%, 72.5%) for --clavis-accent-blue-light (Focus rings) */
+
+    --radius: 0.5rem; /* Default border radius for shadcn/ui */
+  }
+
+  .dark {
+    /* Ensure dark theme variables are applied if not already default */
+    /* Most are defined above, this is a fallback or for explicit .dark scoping if needed */
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Background Graphpaper (from STYLE_GUIDE.md) */
+    background-image:
+      linear-gradient(rgba(70, 70, 100, 0.15) 1px, transparent 1px), 
+      linear-gradient(90deg, rgba(70, 70, 100, 0.15) 1px, transparent 1px);
+    background-size: 30px 30px; /* Slightly larger grid */
+    background-position: -1px -1px;
+    background-attachment: fixed; /* Keep graphpaper fixed */
+  }
+
+  /* Background Spotlight Effects (from STYLE_GUIDE.md) */
+  body::before,
+  body::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px); /* Increased blur */
+    opacity: 0.3; /* Adjusted opacity */
+    z-index: -10;
+    pointer-events: none; /* Ensure they don't interfere with interactions */
+  }
+
+  body::before { /* Top-left spotlight */
+    width: clamp(300px, 50vw, 600px); /* Responsive size */
+    height: clamp(300px, 50vw, 600px);
+    left: -10vw;
+    top: -15vh;
+    background: radial-gradient(circle, var(--clavis-accent-blue-light) 0%, transparent 70%);
+    opacity: 0.2; /* Subtler */
+  }
+
+  body::after { /* Bottom-right spotlight */
+    width: clamp(400px, 60vw, 700px);
+    height: clamp(400px, 60vw, 700px);
+    right: -15vw;
+    bottom: -20vh;
+    background: radial-gradient(circle, var(--clavis-accent-pink-vivid) 0%, var(--clavis-accent-blue-deep) 50%, transparent 80%);
+    opacity: 0.15; /* Subtler */
+  }
+
+  /* Font variable setup for Tailwind (if not handled by next/font in layout) */
+  .font-heading {
+    font-family: var(--font-poppins), sans-serif;
+  }
+  .font-body {
+    font-family: var(--font-inter), sans-serif;
+  }
+}
+
+/* Interactive Spotlight Hover Effect (from STYLE_GUIDE.md) */
+@layer components {
+  [data-spotlight-hover="true"] {
+    position: relative;
+    overflow: hidden; /* Contain the pseudo-element */
+  }
+  [data-spotlight-hover="true"]::before {
+    content: "";
+    position: absolute;
+    top: var(--mouse-y-local, 50%);
+    left: var(--mouse-x-local, 50%);
+    width: 0; 
+    height: 0;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s ease-out, height 0.3s ease-out, opacity 0.3s ease-out;
+    opacity: 0;
+    z-index: 0; /* Ensure it's above background but below content */
+    pointer-events: none;
+  }
+  [data-spotlight-hover="true"]:hover::before {
+    width: 250px; /* Slightly larger spotlight */
+    height: 250px;
+    opacity: 1;
+  }
+}
+
+/* Custom utility for text gradient shine animation (example) */
+@layer utilities {
+  .animate-gradient-shine {
+    animation: gradientShine 5s ease infinite;
+    background-size: 200% 200%;
+  }
+  @keyframes gradientShine {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+}
